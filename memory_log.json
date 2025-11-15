@@ -1,0 +1,2051 @@
+[
+    {
+        "timestamp": "2025-11-15T17:49:10.342566",
+        "city": "Miami,US",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 18.7,
+                "wind_speed_ms": 2.06,
+                "description": "few clouds"
+            }
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "raw_data": {
+            "coord": {
+                "lon": -80.1937,
+                "lat": 25.7743
+            },
+            "weather": [
+                {
+                    "id": 801,
+                    "main": "Clouds",
+                    "description": "few clouds",
+                    "icon": "02d"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 18.7,
+                "feels_like": 18.69,
+                "temp_min": 14,
+                "temp_max": 19.01,
+                "pressure": 1018,
+                "humidity": 79,
+                "sea_level": 1018,
+                "grnd_level": 1017
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 2.06,
+                "deg": 350
+            },
+            "clouds": {
+                "all": 20
+            },
+            "dt": 1763208756,
+            "sys": {
+                "type": 1,
+                "id": 4896,
+                "country": "US",
+                "sunrise": 1763206738,
+                "sunset": 1763245926
+            },
+            "timezone": -18000,
+            "id": 4164138,
+            "name": "Miami",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T18:06:30.367195",
+        "city": "Miami,US",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 18.7,
+                "wind_speed_ms": 2.06,
+                "description": "few clouds"
+            },
+            "trend": "No trend data available."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "raw_data": {
+            "coord": {
+                "lon": -80.1937,
+                "lat": 25.7743
+            },
+            "weather": [
+                {
+                    "id": 801,
+                    "main": "Clouds",
+                    "description": "few clouds",
+                    "icon": "02d"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 18.7,
+                "feels_like": 18.69,
+                "temp_min": 14,
+                "temp_max": 19.01,
+                "pressure": 1018,
+                "humidity": 79,
+                "sea_level": 1018,
+                "grnd_level": 1017
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 2.06,
+                "deg": 350
+            },
+            "clouds": {
+                "all": 20
+            },
+            "dt": 1763210193,
+            "sys": {
+                "type": 1,
+                "id": 4896,
+                "country": "US",
+                "sunrise": 1763206738,
+                "sunset": 1763245926
+            },
+            "timezone": -18000,
+            "id": 4164138,
+            "name": "Miami",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T18:23:00.328965",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 27.82,
+                "wind_speed_ms": 0.48,
+                "description": "overcast clouds"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 27.82,
+                "feels_like": 33.51,
+                "temp_min": 27.82,
+                "temp_max": 27.82,
+                "pressure": 1012,
+                "humidity": 92,
+                "sea_level": 1012,
+                "grnd_level": 1008
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 0.48,
+                "deg": 69,
+                "gust": 0.52
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763211183,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T18:57:45.771750",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "MODERATE",
+            "reasoning": "Rain reported. Monitor conditions.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 0.48,
+                "description": "light rain"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Error generating recommendations.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 500,
+                    "main": "Rain",
+                    "description": "light rain",
+                    "icon": "10n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.41,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1012,
+                "humidity": 92,
+                "sea_level": 1012,
+                "grnd_level": 1008
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 0.48,
+                "deg": 69,
+                "gust": 0.52
+            },
+            "rain": {
+                "1h": 0.37
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763213143,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T19:04:08.190188",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "MODERATE",
+            "reasoning": "Rain reported. Monitor conditions.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 0.48,
+                "description": "light rain"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Error generating recommendations.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 500,
+                    "main": "Rain",
+                    "description": "light rain",
+                    "icon": "10n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.41,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1012,
+                "humidity": 92,
+                "sea_level": 1012,
+                "grnd_level": 1008
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 0.48,
+                "deg": 69,
+                "gust": 0.52
+            },
+            "rain": {
+                "1h": 0.37
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763213143,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T19:26:10.213691",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 0.64,
+                "description": "overcast clouds"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.51,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1012,
+                "humidity": 93,
+                "sea_level": 1012,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 0.64,
+                "deg": 85,
+                "gust": 0.66
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763214973,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T19:28:48.915072",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 0.64,
+                "description": "overcast clouds"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.51,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1012,
+                "humidity": 93,
+                "sea_level": 1012,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 0.64,
+                "deg": 85,
+                "gust": 0.66
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763214973,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T19:45:04.842381",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "MODERATE",
+            "reasoning": "Rain reported. Monitor conditions.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 0.64,
+                "description": "light rain"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Error generating recommendations.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 500,
+                    "main": "Rain",
+                    "description": "light rain",
+                    "icon": "10n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.51,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1012,
+                "humidity": 93,
+                "sea_level": 1012,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 0.64,
+                "deg": 85,
+                "gust": 0.66
+            },
+            "rain": {
+                "1h": 0.15
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763216005,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T19:59:18.572920",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "MODERATE",
+            "reasoning": "Rain reported. Monitor conditions.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 0.64,
+                "description": "light rain"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Error generating recommendations.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 500,
+                    "main": "Rain",
+                    "description": "light rain",
+                    "icon": "10n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.51,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1012,
+                "humidity": 93,
+                "sea_level": 1012,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 0.64,
+                "deg": 85,
+                "gust": 0.66
+            },
+            "rain": {
+                "1h": 0.52
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763216961,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T20:05:05.047291",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "MODERATE",
+            "reasoning": "Rain reported. Monitor conditions.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.05,
+                "description": "moderate rain"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Error generating recommendations.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 501,
+                    "main": "Rain",
+                    "description": "moderate rain",
+                    "icon": "10n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.6,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 94,
+                "sea_level": 1013,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.05,
+                "deg": 89,
+                "gust": 1.01
+            },
+            "rain": {
+                "1h": 1.33
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763217291,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T20:19:54.458599",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "MODERATE",
+            "reasoning": "Rain reported. Monitor conditions.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.05,
+                "description": "moderate rain"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Error generating recommendations.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 501,
+                    "main": "Rain",
+                    "description": "moderate rain",
+                    "icon": "10n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.6,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 94,
+                "sea_level": 1013,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.05,
+                "deg": 89,
+                "gust": 1.01
+            },
+            "rain": {
+                "1h": 1.68
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763218052,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T20:28:42.040887",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "MODERATE",
+            "reasoning": "Rain reported. Monitor conditions.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.05,
+                "description": "moderate rain"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Error generating recommendations.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 501,
+                    "main": "Rain",
+                    "description": "moderate rain",
+                    "icon": "10n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.6,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 94,
+                "sea_level": 1013,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.05,
+                "deg": 89,
+                "gust": 1.01
+            },
+            "rain": {
+                "1h": 1.68
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763218052,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T20:32:53.318100",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.05,
+                "description": "overcast clouds"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.6,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 94,
+                "sea_level": 1013,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.05,
+                "deg": 89,
+                "gust": 1.01
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763218976,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T20:33:46.782953",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.05,
+                "description": "overcast clouds"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.6,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 94,
+                "sea_level": 1013,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.05,
+                "deg": 89,
+                "gust": 1.01
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763218976,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T20:36:26.639091",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.05,
+                "description": "overcast clouds"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.6,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 94,
+                "sea_level": 1013,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.05,
+                "deg": 89,
+                "gust": 1.01
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763218976,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T20:42:21.283293",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.05,
+                "description": "overcast clouds"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.6,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 94,
+                "sea_level": 1013,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.05,
+                "deg": 89,
+                "gust": 1.01
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763218976,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T20:57:40.403993",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "MODERATE",
+            "reasoning": "Rain reported. Monitor conditions.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.05,
+                "description": "light rain"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Error generating recommendations.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 500,
+                    "main": "Rain",
+                    "description": "light rain",
+                    "icon": "10n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.6,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 94,
+                "sea_level": 1013,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.05,
+                "deg": 89,
+                "gust": 1.01
+            },
+            "rain": {
+                "1h": 0.73
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763220383,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T21:03:38.780654",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "MODERATE",
+            "reasoning": "Rain reported. Monitor conditions.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.05,
+                "description": "light rain"
+            },
+            "trend": "The risk has increased to MODERATE due to rain and is now holding steady."
+        },
+        "recommendations": "*   Drive with caution on wet roads. Slow down, increase your following distance, and use your headlights for visibility.\n*   Watch your step on sidewalks, outdoor stairs, and other surfaces that may be slippery when wet.\n*   Ensure storm drains and gutters near your home are clear of debris to prevent localized water pooling.\n*   Allow for extra travel time due to potentially slower traffic and reduced visibility.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 500,
+                    "main": "Rain",
+                    "description": "light rain",
+                    "icon": "10n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.6,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 94,
+                "sea_level": 1013,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.05,
+                "deg": 89,
+                "gust": 1.01
+            },
+            "rain": {
+                "1h": 0.73
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763220383,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T21:10:28.289257",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.28,
+                "description": "overcast clouds"
+            },
+            "trend": "After a brief period of rain, conditions have improved and the risk is now decreasing."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.7,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 95,
+                "sea_level": 1013,
+                "grnd_level": 1010
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.28,
+                "deg": 89,
+                "gust": 1.36
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763221195,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T21:15:55.866836",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.28,
+                "description": "overcast clouds"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.7,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 95,
+                "sea_level": 1013,
+                "grnd_level": 1010
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.28,
+                "deg": 89,
+                "gust": 1.36
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763221195,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T21:16:41.880002",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.28,
+                "description": "overcast clouds"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.7,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 95,
+                "sea_level": 1013,
+                "grnd_level": 1010
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.28,
+                "deg": 89,
+                "gust": 1.36
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763221195,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T21:18:21.295700",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.28,
+                "description": "overcast clouds"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.7,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 95,
+                "sea_level": 1013,
+                "grnd_level": 1010
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.28,
+                "deg": 89,
+                "gust": 1.36
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763221195,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T21:19:36.285626",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.28,
+                "description": "overcast clouds"
+            },
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Error analyzing news.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.7,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 95,
+                "sea_level": 1013,
+                "grnd_level": 1010
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.28,
+                "deg": 89,
+                "gust": 1.36
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763221195,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T21:20:12.716019",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 26.82,
+                "wind_speed_ms": 1.28,
+                "description": "overcast clouds"
+            },
+            "trend": "Conditions remain calm with a stable and low risk level."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Bay of Bengal may come back to life next week: Weather models are forecasting a potential major storm with heavy rain and high winds developing off the Tamil Nadu coast next week.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 26.82,
+                "feels_like": 30.7,
+                "temp_min": 26.82,
+                "temp_max": 26.82,
+                "pressure": 1013,
+                "humidity": 95,
+                "sea_level": 1013,
+                "grnd_level": 1010
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.28,
+                "deg": 89,
+                "gust": 1.36
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763221195,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        }
+    },
+    {
+        "timestamp": "2025-11-15T22:05:14.299774",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 25.82,
+                "wind_speed_ms": 0.93,
+                "description": "overcast clouds"
+            },
+            "trend": "Risk remains low and stable as calm conditions persist."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Bay of Bengal may come back to life next week: A potential major storm with heavy rain and high winds may develop off the Tamil Nadu coast next week.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 25.82,
+                "feels_like": 26.96,
+                "temp_min": 25.82,
+                "temp_max": 25.82,
+                "pressure": 1013,
+                "humidity": 96,
+                "sea_level": 1013,
+                "grnd_level": 1010
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 0.93,
+                "deg": 100,
+                "gust": 0.92
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763224368,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        },
+        "forecast_data": null
+    },
+    {
+        "timestamp": "2025-11-15T22:59:37.544593",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 25.82,
+                "wind_speed_ms": 0.93,
+                "description": "overcast clouds"
+            },
+            "trend": "The risk level remains stable and low as calm conditions persist."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Bay of Bengal may come back to life next week: A potential major storm with heavy rain and high winds is forecast to develop off the Tamil Nadu coast next week.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 25.82,
+                "feels_like": 26.96,
+                "temp_min": 25.82,
+                "temp_max": 25.82,
+                "pressure": 1013,
+                "humidity": 96,
+                "sea_level": 1013,
+                "grnd_level": 1010
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 0.93,
+                "deg": 100,
+                "gust": 0.92
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763227762,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763229600,
+                    "temp_min": 22.95,
+                    "temp_max": 25.82,
+                    "icon": "04n",
+                    "pop": 0.72
+                },
+                {
+                    "dt": 1763240400,
+                    "temp_min": 21.44,
+                    "temp_max": 31.08,
+                    "icon": "04n",
+                    "pop": 0.95
+                },
+                {
+                    "dt": 1763326800,
+                    "temp_min": 21.37,
+                    "temp_max": 31.08,
+                    "icon": "04n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763413200,
+                    "temp_min": 21.89,
+                    "temp_max": 24.79,
+                    "icon": "10d",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 21.5,
+                    "temp_max": 25.13,
+                    "icon": "10d",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 21.39,
+                    "temp_max": 28.71,
+                    "icon": "10d",
+                    "pop": 1
+                }
+            ]
+        }
+    },
+    {
+        "timestamp": "2025-11-15T23:06:26.438036",
+        "city": "Kerala,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 25.82,
+                "wind_speed_ms": 0.93,
+                "description": "overcast clouds"
+            },
+            "trend": "Conditions remain stable with a consistent low risk."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "Bay of Bengal may come back to life next week: A major storm with potential heavy rain and high winds is forecast to develop off the Tamil Nadu coast next week.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.5,
+                "lat": 10
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 25.82,
+                "feels_like": 26.96,
+                "temp_min": 25.82,
+                "temp_max": 25.82,
+                "pressure": 1013,
+                "humidity": 96,
+                "sea_level": 1013,
+                "grnd_level": 1010
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 0.93,
+                "deg": 100,
+                "gust": 0.92
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763227762,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167718,
+                "sunset": 1763209724
+            },
+            "timezone": 19800,
+            "id": 1267254,
+            "name": "Kerala",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763229600,
+                    "temp_min": 22.95,
+                    "temp_max": 25.82,
+                    "icon": "04n",
+                    "pop": 0.72
+                },
+                {
+                    "dt": 1763240400,
+                    "temp_min": 21.44,
+                    "temp_max": 31.08,
+                    "icon": "04n",
+                    "pop": 0.95
+                },
+                {
+                    "dt": 1763326800,
+                    "temp_min": 21.37,
+                    "temp_max": 31.08,
+                    "icon": "04n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763413200,
+                    "temp_min": 21.89,
+                    "temp_max": 24.79,
+                    "icon": "10d",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 21.5,
+                    "temp_max": 25.13,
+                    "icon": "10d",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 21.39,
+                    "temp_max": 28.71,
+                    "icon": "10d",
+                    "pop": 1
+                }
+            ]
+        }
+    },
+    {
+        "timestamp": "2025-11-15T23:54:33.595112",
+        "city": "Kochi,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 24.99,
+                "wind_speed_ms": 2.81,
+                "description": "overcast clouds"
+            },
+            "trend": "No trend data available."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.2602,
+                "lat": 9.9399
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 24.99,
+                "feels_like": 25.74,
+                "temp_min": 24.99,
+                "temp_max": 24.99,
+                "pressure": 1013,
+                "humidity": 84,
+                "sea_level": 1013,
+                "grnd_level": 1012
+            },
+            "visibility": 362,
+            "wind": {
+                "speed": 2.81,
+                "deg": 108,
+                "gust": 3.87
+            },
+            "clouds": {
+                "all": 99
+            },
+            "dt": 1763230573,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167770,
+                "sunset": 1763209787
+            },
+            "timezone": 19800,
+            "id": 1273874,
+            "name": "Kochi",
+            "cod": 200
+        },
+        "forecast_data": null
+    },
+    {
+        "timestamp": "2025-11-15T23:58:43.850849",
+        "city": "Kochi,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 24.99,
+                "wind_speed_ms": 2.81,
+                "description": "overcast clouds"
+            },
+            "trend": "No trend data available."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.2602,
+                "lat": 9.9399
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 24.99,
+                "feels_like": 25.74,
+                "temp_min": 24.99,
+                "temp_max": 24.99,
+                "pressure": 1013,
+                "humidity": 84,
+                "sea_level": 1013,
+                "grnd_level": 1012
+            },
+            "visibility": 362,
+            "wind": {
+                "speed": 2.81,
+                "deg": 108,
+                "gust": 3.87
+            },
+            "clouds": {
+                "all": 99
+            },
+            "dt": 1763230573,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763167770,
+                "sunset": 1763209787
+            },
+            "timezone": 19800,
+            "id": 1273874,
+            "name": "Kochi",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763240400,
+                    "temp_min": 24.54,
+                    "temp_max": 28.22,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763326800,
+                    "temp_min": 23.84,
+                    "temp_max": 28.32,
+                    "icon": "04n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763413200,
+                    "temp_min": 23.98,
+                    "temp_max": 25.23,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 23.37,
+                    "temp_max": 25.55,
+                    "icon": "10d",
+                    "pop": 0.99
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 23.49,
+                    "temp_max": 27.96,
+                    "icon": "10n",
+                    "pop": 1
+                }
+            ]
+        }
+    },
+    {
+        "timestamp": "2025-11-16T00:29:33.529962",
+        "city": "Kollam,IN",
+        "risk_report": {
+            "risk_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 25.69,
+                "wind_speed_ms": 3.77,
+                "description": "overcast clouds"
+            },
+            "trend": "No trend data available."
+        },
+        "recommendations": "Conditions are calm. No special actions required.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.6,
+                "lat": 8.8833
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 25.69,
+                "feels_like": 26.51,
+                "temp_min": 25.69,
+                "temp_max": 25.69,
+                "pressure": 1012,
+                "humidity": 84,
+                "sea_level": 1012,
+                "grnd_level": 1012
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 3.77,
+                "deg": 139,
+                "gust": 4.58
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763233176,
+            "sys": {
+                "country": "IN",
+                "sunrise": 1763254024,
+                "sunset": 1763296193
+            },
+            "timezone": 19800,
+            "id": 1259091,
+            "name": "Kollam",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763240400,
+                    "temp_min": 25.43,
+                    "temp_max": 27.65,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763326800,
+                    "temp_min": 25.11,
+                    "temp_max": 27.43,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763413200,
+                    "temp_min": 24.01,
+                    "temp_max": 27.3,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 24.2,
+                    "temp_max": 25.98,
+                    "icon": "10n",
+                    "pop": 0.93
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 24.29,
+                    "temp_max": 27.39,
+                    "icon": "04n",
+                    "pop": 1
+                }
+            ]
+        }
+    }
+]
