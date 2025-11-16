@@ -29,8 +29,11 @@ if not all([GOOGLE_API_KEY, WEATHER_API_KEY, NEWS_API_KEY]):
 
 genai.configure(api_key=GOOGLE_API_KEY)
 
-# --- FIX 1: Using the most stable model name ---
-llm_model = genai.GenerativeModel('models/gemini-pro-latest')
+# --- MODELS (UPGRADED) ---
+# Use a standard, fast model for simple analysis
+llm_model_fast = genai.GenerativeModel('models/gemini-pro-latest')
+# Use a (hypothetical) more advanced model for complex recommendations
+llm_model_advanced = genai.GenerativeModel('models/gemini-1.5-pro-latest')
 
 newsapi = NewsApiClient(api_key=NEWS_API_KEY)
 
@@ -38,6 +41,9 @@ MEMORY_FILE = "memory_log.json"
 CONTROL_FILE = "control_file.json"  # --- NEW: Control file ---
 DEFAULT_LOCATION = "Kerala,IN"  # Fallback if control file is missing
 LOOP_INTERVAL_SECONDS = 3600  # 3600 seconds = 1 hour. (Set to 60 for testing)
+
+# --- NEW: Set check interval to 1 second for a near-instant response ---
+LOCATION_CHECK_INTERVAL_SECONDS = 1
 
 
 # --- NEW: Function to read control file ---
@@ -57,6 +63,40 @@ def get_target_location() -> str:
     except Exception as e:
         print(f"[Main] Error reading control file '{e}'. Using default: {DEFAULT_LOCATION}")
         return DEFAULT_LOCATION
+
+
+# --- NEW: Function to "sleep" but wake up to check for changes ---
+def smart_sleep_and_watch(duration_seconds: int, check_interval_seconds: int, location_at_start_of_sleep: str):
+    """
+    Sleeps for 'duration_seconds' but wakes up every 'check_interval_seconds'
+    to see if the control file's location has changed.
+
+    Returns True if a change was detected, False otherwise.
+    """
+    print(f"[Main] Sleeping, but checking {CONTROL_FILE} every {check_interval_seconds}s for changes...")
+
+    end_time = time.time() + duration_seconds
+
+    while time.time() < end_time:
+        # Calculate how long to sleep: either the check_interval or time
+        # remaining, whichever is smaller.
+        sleep_time = min(check_interval_seconds, end_time - time.time())
+
+        if sleep_time <= 0:
+            break  # Time's up
+
+        time.sleep(sleep_time)
+
+        # Now, check the file
+        current_file_location = get_target_location()
+
+        # Compare against the location we had when this run started
+        if current_file_location.lower() != location_at_start_of_sleep.lower():
+            print(f"[Main] Location change detected: '{location_at_start_of_sleep}' -> '{current_file_location}'")
+            return True  # A change was detected!
+
+    # If the loop finished without finding a change
+    return False
 
 
 # --- 2. AGENT DEFINITIONS (MODIFIED) ---
@@ -134,6 +174,9 @@ def agent_1_5_forecast_processor(api_url: str, city_name: str) -> dict:
                 'pop': max_pop
             })
 
+        # --- FIX: Sort the forecast by date to ensure chronological order ---
+        processed_daily.sort(key=lambda x: x['dt'])
+
         print(f"[Agent 1.5] Processed {len(processed_daily)} forecast days.")
         # Return a simple dictionary, matching the old structure
         return {'daily': processed_daily}
@@ -143,7 +186,24 @@ def agent_1_5_forecast_processor(api_url: str, city_name: str) -> dict:
         return None
 
 
-# --- END UPDATED AGENT ---
+# --- NEW: AGENT 1.6 (Air Quality) ---
+def agent_1_6_air_quality_fetcher(lat: float, lon: float, api_key: str) -> dict:
+    """Agent 1.6: Fetches air quality data from the API."""
+    print(f"[Agent 1.6] Fetching Air Quality for (lat:{lat}, lon:{lon})...")
+    api_url = f"http://api.openweathermap.org/data/2.5/air_pollution?lat={lat}&lon={lon}&appid={api_key}"
+    try:
+        response = requests.get(api_url)
+        response.raise_for_status()
+        print("[Agent 1.6] Air Quality fetch successful.")
+        # The data is nested in 'list', we just want the first (and only) item
+        return response.json()['list'][0]
+    except Exception as e:
+        print(f"[Agent 1.6] ERROR: {e}")
+        return None
+
+
+# --- END NEW AGENT ---
+
 
 def agent_2_risk_classifier(weather_data: dict) -> dict:
     """Agent 2: Converts raw data into risk levels (Code Tool)."""
@@ -180,26 +240,77 @@ def agent_2_risk_classifier(weather_data: dict) -> dict:
     }
 
 
-def agent_3_action_recommender(risk_report: dict) -> str:
-    """Agent 3: UPGRADED to use trend data (LLM)."""
-    print("[Agent 3] Generating advanced recommendations...")
-    if risk_report["risk_level"] == "LOW":
-        print("[Agent 3] Risk is LOW. No actions needed.")
-        return "Conditions are calm. No special actions required."
+# --- NEW: AGENT 2.5 (Air Quality Analysis) ---
+def agent_2_5_air_quality_analyzer(aqi_data: dict) -> dict:
+    """Agent 2.5: Uses LLM to analyze raw AQI data."""
+    print("[Agent 2.5] Analyzing Air Quality...")
+    if not aqi_data:
+        return {"aqi": "N/A", "analysis": "No data"}
+
+    aqi_index = aqi_data.get('main', {}).get('aqi', 0)
+    components = aqi_data.get('components', {})
+
+    # Map AQI index to a human-readable name
+    aqi_map = {1: "Good", 2: "Fair", 3: "Moderate", 4: "Poor", 5: "Very Poor"}
+    aqi_name = aqi_map.get(aqi_index, "Unknown")
+
     prompt = f"""
-    You are an expert community safety advisor.
-    Risk Level: {risk_report['risk_level']}
-    Reason: {risk_report['reasoning']}
-    Weather Details: {risk_report['details']}
-    CRITICAL TREND: {risk_report['trend']}
-    Based on all this information, especially the trend, provide a short,
-    clear, and actionable list of 3-5 recommendations for residents.
-    If the trend is "worsening," be more urgent.
-    Use bullet points. Do not use an introduction.
+    You are a public health advisor.
+    The current Air Quality Index (AQI) is {aqi_index} ({aqi_name}).
+    The key pollutants are (in μg/m³):
+    - PM2.5: {components.get('pm2_5', 'N/A')}
+    - Ozone (O3): {components.get('o3', 'N/A')}
+    - Nitrogen Dioxide (NO2): {components.get('no2', 'N/A')}
+
+    Provide a simple, one-sentence analysis and health recommendation
+    for the general public.
+    Example: 'Air quality is moderate; sensitive groups should limit outdoor activity.'
     """
     try:
-        response = llm_model.generate_content(prompt)
-        print("[Agent 3] Recommendations generated.")
+        response = llm_model_fast.generate_content(prompt)
+        analysis_text = response.text.strip()
+        print(f"[Agent 2.5] Analysis complete: {analysis_text}")
+        return {"aqi": aqi_index, "analysis": analysis_text}
+    except Exception as e:
+        print(f"[Agent 2.5] ERROR: {e}")
+        # FIX: Return the NUMERIC index, not the string name, to avoid a TypeError
+        return {"aqi": aqi_index, "analysis": "Error analyzing air quality."}
+
+
+# --- END NEW AGENT ---
+
+
+def agent_3_action_recommender(risk_report: dict, air_quality_report: dict) -> str:
+    """Agent 3: UPGRADED to use trend and air quality (Advanced LLM)."""
+    print("[Agent 3] Generating advanced recommendations with advanced model...")
+    if risk_report["risk_level"] == "LOW" and air_quality_report.get('aqi', 0) <= 2:
+        print("[Agent 3] Risk is LOW. No actions needed.")
+        return "Conditions are calm and air quality is good. No special actions required."
+
+    prompt = f"""
+    You are an expert community safety advisor using an advanced reasoning model.
+    Synthesize all of the following information to provide a single, holistic
+    set of 3-5 bullet-point recommendations.
+
+    1.  **Weather Risk**:
+        * Level: {risk_report['risk_level']}
+        * Reason: {risk_report['reasoning']}
+        * Trend: {risk_report['trend']}
+        * Details: {risk_report['details']}
+
+    2.  **Air Quality**:
+        * AQI: {air_quality_report.get('aqi', 'N/A')}
+        * Analysis: {air_quality_report.get('analysis', 'N/A')}
+
+    **Instructions**:
+    - Combine the advice. If wind is high AND air quality is poor, be extra urgent.
+    - If it's raining, mention it might help clear the poor air.
+    - Be clear and actionable. Do not use an introduction.
+    """
+    try:
+        # Use the more advanced model for this complex task
+        response = llm_model_advanced.generate_content(prompt)
+        print("[Agent 3] Advanced recommendations generated.")
         return response.text
     except Exception as e:
         print(f"[Agent 3] ERROR: {e}")
@@ -265,7 +376,7 @@ def agent_5_trend_forecaster(current_risk_report: dict, memory_file: str, city_n
     (e.g., "Conditions are rapidly worsening," "The storm appears to be passing," "Risk remains high but stable.")
     """
     try:
-        response = llm_model.generate_content(prompt)
+        response = llm_model_fast.generate_content(prompt)
         trend = response.text.strip()
         print(f"[Agent 5] Trend identified: {trend}")
         return trend
@@ -278,7 +389,7 @@ def agent_6_news_fetcher(city: str, weather_desc: str) -> list:
     """Agent 6: Fetches relevant raw news articles."""
     print("[Agent 6] Fetching relevant news...")
     city_main = city.split(',')[0]
-    query = f'"{city_main}" AND ("weather" OR "flood" OR "storm" OR "rain" OR "{weather_desc}")'
+    query = f'"{city_main}" AND ("weather" OR "flood" OR "storm" OR "rain" OR "air quality" OR "{weather_desc}")'
     from_date = (datetime.now() - timedelta(days=3)).strftime('%Y-%m-%d')
     try:
         all_articles = newsapi.get_everything(
@@ -314,7 +425,7 @@ def agent_7_news_analyzer(articles: list) -> str:
     prompt = f"""
     You are a local safety analyst. I have provided a list of news articles
     below. Read them and identify ONLY the ones that are relevant to
-    immediate local safety, weather alerts, or major disruptions.
+    immediate local safety, weather alerts, air quality warnings, or major disruptions.
     For each relevant article, provide a 1-sentence summary.
     If no articles are relevant, just say "No relevant local safety news found."
     Format your response like this:
@@ -323,15 +434,13 @@ def agent_7_news_analyzer(articles: list) -> str:
     {articles_str}
     """
     try:
-        response = llm_model.generate_content(prompt)
+        response = llm_model_fast.generate_content(prompt)
         print("[Agent 7] News analysis complete.")
         return response.text.strip()
     except Exception as e:
         print(f"[Agent 7] ERROR: {e}")
         return "Error analyzing news."
 
-
-# --- FIX 2: NEW AI AGENT FOR COMPOSING EMAIL ---
 
 def agent_8_email_composer(log_entry: dict) -> dict:
     """
@@ -344,24 +453,27 @@ def agent_8_email_composer(log_entry: dict) -> dict:
     if risk_level == "HIGH":
         subject = f"URGENT Safety Alert for {city}: {log_entry['risk_report']['reasoning']}"
     elif risk_level == "MODERATE":
-        subject = f"Weather Advisory for {city}: {log_entry['risk_report']['reasoning']}"
+        subject = f"Weather & Air Quality Advisory for {city}"
     else:
-        subject = f"Weekly Weather Summary for {city}"
+        subject = f"Weekly Weather & Safety Summary for {city}"
+
     recommendations = log_entry['recommendations']
     if "Error" in recommendations:
         recommendations = "N/A"
     news = log_entry['analyzed_news']
     if "Error" in news:
         news = "N/A"
+
     prompt = f"""
     You are a communications assistant. Generate a professional and colorful
     HTML email body for a weather alert.
     DATA:
     - City: {city}
-    - Risk Level: {risk_level}
-    - Reason: {log_entry['risk_report']['reasoning']}
-    - Trend: {log_entry['risk_report']['trend']}
-    - Details: {log_entry['risk_report']['details']}
+    - Weather Risk: {risk_level}
+    - Weather Reason: {log_entry['risk_report']['reasoning']}
+    - Weather Trend: {log_entry['risk_report']['trend']}
+    - Weather Details: {log_entry['risk_report']['details']}
+    - Air Quality: {log_entry.get('air_quality_report', {}).get('analysis', 'N/A')}
     - Recommendations: {recommendations}
     - Local News: {news}
     INSTRUCTIONS:
@@ -370,13 +482,13 @@ def agent_8_email_composer(log_entry: dict) -> dict:
     - Create a main container (max-width: 600px).
     - Use a header with a main title.
     - Use a color bar at the top (RED for HIGH risk, ORANGE for MODERATE, GREEN for LOW).
-    - Format the "Details" (temp, wind) in a clean table or list.
+    - Format "Weather Details" and "Air Quality" in a clean list or table.
     - Format "Recommendations" and "Local News" as bullet lists.
     - Add a footer: "Stay safe, The ClimateSense Team".
     Provide ONLY the HTML code, starting with <html> and ending with </html>.
     """
     try:
-        response = llm_model.generate_content(prompt)
+        response = llm_model_fast.generate_content(prompt)
         html_body = response.text
         html_body = html_body.replace("```html", "").replace("```", "").strip()
         print("[Agent 8] Email composition successful.")
@@ -390,9 +502,70 @@ def agent_8_email_composer(log_entry: dict) -> dict:
         }
 
 
-# --- FIX 3: PDF & EMAIL FUNCTIONS (HEAVILY UPGRADED) ---
+# --- NEW: AGENT 9 (Satellite Fetcher - MOCKED) ---
+def agent_9_satellite_image_fetcher(city: str, weather_desc: str) -> dict:
+    """Agent 9: Simulates fetching a satellite image URL and basic analysis."""
+    print(f"[Agent 9] Simulating satellite image fetch for {city}...")
+    # In a real app, this would query NASA, ESA, or another satellite API
 
-# This class is now simpler, we'll add content in the main function
+    # Mock data based on weather
+    image_url = f"https://placehold.co/600x400/101419/555555?text=Satellite+View+{city.split(',')[0]}"
+    mock_description = "Clear skies, no major formations."
+
+    if "rain" in weather_desc:
+        mock_description = "Significant cloud formations consistent with rain."
+        image_url = f"https://placehold.co/600x400/222222/999999?text=Satellite+View+(Cloudy)+{city.split(',')[0]}"
+    elif "thunderstorm" in weather_desc:
+        mock_description = "Large, dense cumulonimbus cloud cluster detected."
+        image_url = f"https://placehold.co/600x400/111111/FFFFFF?text=Satellite+View+(Storm)+{city.split(',')[0]}"
+    elif "fog" in weather_desc or "haze" in weather_desc:
+        mock_description = "Low-lying ground-level fog or haze visible."
+        image_url = f"https://placehold.co/600x400/555555/EEEEEE?text=Satellite+View+(Fog)+{city.split(',')[0]}"
+
+    return {
+        "image_url": image_url,
+        "description": mock_description
+    }
+
+
+# --- END NEW AGENT ---
+
+# --- NEW: AGENT 10 (Satellite Analyzer) ---
+def agent_10_satellite_analyzer(image_data: dict) -> dict:
+    """Agent 10: Uses LLM to provide a strategic analysis of satellite data."""
+    print("[Agent 10] Analyzing satellite data...")
+
+    prompt = f"""
+    You are a remote sensing analyst. Your satellite has provided the
+    following basic description of a target area:
+    "{image_data['description']}"
+
+    Provide a 1-2 sentence strategic analysis for a safety dashboard.
+    What does this imply for the local area?
+    Example: "Analysis: Clear skies confirm ideal conditions, but also high UV risk."
+    Example: "Analysis: The large storm cell indicates an imminent threat."
+    """
+    try:
+        response = llm_model_fast.generate_content(prompt)
+        analysis = response.text.strip()
+        print("[Agent 10] Satellite analysis complete.")
+        return {
+            "image_url": image_data['image_url'],
+            "analysis": analysis
+        }
+    except Exception as e:
+        print(f"[Agent 10] ERROR: {e}")
+        return {
+            "image_url": image_data['image_url'],
+            "analysis": "Error analyzing satellite data."
+        }
+
+
+# --- END NEW AGENT ---
+
+
+# --- PDF & EMAIL FUNCTIONS ---
+
 class PDF(FPDF):
     """Custom PDF class to create colorful headers/footers."""
 
@@ -423,6 +596,7 @@ def generate_pdf_report(report_data: dict) -> str:
     details = report_data.get('risk_report', {}).get('details', {})
     recommendations = report_data.get('recommendations', 'N/A')
     news = report_data.get('analyzed_news', 'N/A')
+    air_quality = report_data.get('air_quality_report', {}).get('analysis', 'N/A')
 
     # --- PDF Header (Risk) ---
     if risk_level == "HIGH":
@@ -448,31 +622,37 @@ def generate_pdf_report(report_data: dict) -> str:
     pdf.ln(5)
 
     pdf.set_font('Helvetica', 'B', 12)
-    pdf.cell(30, 8, "Reason:")
+    pdf.cell(35, 8, "Weather Reason:")
     pdf.set_font('Helvetica', '', 12)
     pdf.multi_cell(0, 8, reason)
     pdf.ln(2)
 
     pdf.set_font('Helvetica', 'B', 12)
-    pdf.cell(30, 8, "Trend:")
+    pdf.cell(35, 8, "Weather Trend:")
     pdf.set_font('Helvetica', '', 12)
     pdf.multi_cell(0, 8, trend)
     pdf.ln(2)
 
     pdf.set_font('Helvetica', 'B', 12)
-    pdf.cell(30, 8, "Details:")
+    pdf.cell(35, 8, "Weather Details:")
     pdf.set_font('Helvetica', '', 12)
     pdf.multi_cell(0, 8,
                    f"Temp: {details.get('temp_c', 'N/A')}°C | "
                    f"Wind: {details.get('wind_speed_ms', 'N/A')} m/s | "
                    f"Desc: {details.get('description', 'N/A')}"
                    )
+    pdf.ln(2)
+
+    pdf.set_font('Helvetica', 'B', 12)
+    pdf.cell(35, 8, "Air Quality:")
+    pdf.set_font('Helvetica', '', 12)
+    pdf.multi_cell(0, 8, air_quality)
     pdf.ln(5)
 
     # --- Recommendations Section ---
     pdf.set_font('Helvetica', 'B', 14)
     pdf.set_fill_color(240, 240, 240)
-    pdf.cell(0, 10, "Recommended Actions", new_x=XPos.LMARGIN, new_y=YPos.NEXT, fill=True, border='T')
+    pdf.cell(0, 10, "Holistic Recommendations", new_x=XPos.LMARGIN, new_y=YPos.NEXT, fill=True, border='T')
     pdf.ln(5)
     pdf.set_font('Helvetica', '', 12)
     pdf.multi_cell(0, 8, recommendations)
@@ -572,7 +752,7 @@ def save_to_memory_bank(log_entry: dict, filepath: str):
         print(f"[Memory] ERROR: Failed to save to memory: {e}")
 
 
-# --- 3. MAIN EXECUTION (UPGRADED) ---
+# --- 3. MAIN EXECUTION (--- MODIFIED ---) ---
 
 if __name__ == "__main__":
     print("--- ClimateSense Agent System ACTIVATED ---")
@@ -590,7 +770,7 @@ if __name__ == "__main__":
 
             # --- Define URLs dynamically inside the loop ---
             CURRENT_WEATHER_URL = f"https://api.openweathermap.org/data/2.5/weather?q={CITY_NAME}&appid={WEATHER_API_KEY}&units=metric"
-            # --- FIX: Corrected the typo 'https.://' to 'https://' ---
+            # --- FIX: Added '://' to the URL ---
             FORECAST_API_URL = f"https://api.openweathermap.org/data/2.5/forecast?q={CITY_NAME}&appid={WEATHER_API_KEY}&units=metric"
             # --- END DYNAMIC LOCATION ---
 
@@ -601,15 +781,30 @@ if __name__ == "__main__":
             forecast_json = agent_1_5_forecast_processor(FORECAST_API_URL, CITY_NAME)
 
             if weather_json:
+                # --- Get Coords for other APIs ---
+                coord = weather_json.get("coord", {})
+                lat = coord.get("lat")
+                lon = coord.get("lon")
+
+                # 1.6. Fetch Air Quality
+                raw_aqi_data = None
+                if lat and lon:
+                    raw_aqi_data = agent_1_6_air_quality_fetcher(lat, lon, WEATHER_API_KEY)
+                else:
+                    print("[Agent 1.6] Skipping air quality, no lat/lon from weather.")
+
                 # 2. Classify current risk
                 risk_report_dict = agent_2_risk_classifier(weather_json)
+
+                # 2.5 Analyze Air Quality
+                air_quality_report = agent_2_5_air_quality_analyzer(raw_aqi_data)
 
                 # 3. Analyze trend using history (now city-specific)
                 trend_analysis = agent_5_trend_forecaster(risk_report_dict, MEMORY_FILE, CITY_NAME)
                 risk_report_dict['trend'] = trend_analysis
 
-                # 4. Get recommendations (now trend-aware)
-                action_list = agent_3_action_recommender(risk_report_dict)
+                # 4. Get recommendations (now trend-aware AND air-quality-aware)
+                action_list = agent_3_action_recommender(risk_report_dict, air_quality_report)
 
                 # 5. Fetch relevant news
                 current_desc = risk_report_dict['details']['description']
@@ -618,13 +813,21 @@ if __name__ == "__main__":
                 # 6. Analyze and summarize news
                 analyzed_news_summary = agent_7_news_analyzer(raw_articles)
 
-                # 7. Broadcast to console
+                # 7. (Agents 9 & 10) Get Satellite Analysis
+                sim_satellite_data = agent_9_satellite_image_fetcher(CITY_NAME, current_desc)
+                satellite_analysis_report = agent_10_satellite_analyzer(sim_satellite_data)
+
+                # 8. Broadcast to console
                 agent_4_broadcast_agent(risk_report_dict, action_list)
                 print("\n--- LATEST NEWS ANALYSIS ---")
                 print(analyzed_news_summary)
+                print("\n--- AIR QUALITY ANALYSIS ---")
+                print(air_quality_report.get('analysis', 'N/A'))
+                print("\n--- SATELLITE ANALYSIS ---")
+                print(satellite_analysis_report.get('analysis', 'N/A'))
                 print("=" * 40 + "\n")
 
-                # 8. Create log entry for memory
+                # 9. Create log entry for memory
                 log_entry = {
                     "timestamp": run_timestamp,
                     "city": CITY_NAME,  # --- CRITICAL: Save the dynamic city name ---
@@ -632,17 +835,19 @@ if __name__ == "__main__":
                     "recommendations": action_list,
                     "analyzed_news": analyzed_news_summary,
                     "raw_data": weather_json,
-                    "forecast_data": forecast_json
+                    "forecast_data": forecast_json,
+                    "air_quality_report": air_quality_report,  # --- NEW DATA
+                    "satellite_analysis": satellite_analysis_report  # --- NEW DATA
                 }
 
-                # 9. Save to Memory Bank
+                # 10. Save to Memory Bank
                 save_to_memory_bank(log_entry, MEMORY_FILE)
 
-                # 10. UPGRADED: Generate & Send Smart Email
+                # 11. UPGRADED: Generate & Send Smart Email
                 if risk_report_dict['risk_level'] in ["MODERATE", "HIGH", "EXTREME"]:
                     print("[Alert] High risk detected. Starting PDF/Email workflow...")
                     pdf_file = generate_pdf_report(log_entry)
-                    email_.content = agent_8_email_composer(log_entry)
+                    email_content = agent_8_email_composer(log_entry)
                     send_email_with_pdf(
                         pdf_file,
                         email_content["subject"],
@@ -654,8 +859,19 @@ if __name__ == "__main__":
             else:
                 print(f"Skipping run due to weather fetch error for {CITY_NAME}.")
 
-            print(f"--- Run complete. Sleeping for {LOOP_INTERVAL_SECONDS} seconds... ---")
-            time.sleep(LOOP_INTERVAL_SECONDS)
+            # --- MODIFIED: Replaced time.sleep() with smart_sleep_and_watch() ---
+            print(f"--- Run complete. Entering smart sleep for {LOOP_INTERVAL_SECONDS} seconds... ---")
+
+            change_detected = smart_sleep_and_watch(
+                duration_seconds=LOOP_INTERVAL_SECONDS,
+                check_interval_seconds=LOCATION_CHECK_INTERVAL_SECONDS,
+                location_at_start_of_sleep=CITY_NAME
+            )
+
+            if change_detected:
+                print("--- Location change detected! Forcing immediate new run. ---")
+            # The loop will now restart immediately
+            # --- END MODIFICATION ---
 
     except KeyboardInterrupt:
         print("\n--- User shutdown. ClimateSense Agent System DEACTIVATED. ---")

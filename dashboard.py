@@ -77,6 +77,9 @@ st.markdown(f"""
     }}
 
     /* 3. Main app styling --- */
+    body {{
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }}
     .stApp {{
         background-color: var(--bg-color);
         color: var(--text-color);
@@ -93,8 +96,8 @@ st.markdown(f"""
         transition: all 0.3s ease;
     }}
     [data-testid="stVerticalBlockBorderWrapper"]:hover {{
-        transform: scale(1.01);
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transform: translateY(-5px); /* Uniform 'lift' effect */
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
     }}
 
     /* 5. Sidebar styling --- */
@@ -113,6 +116,8 @@ st.markdown(f"""
     [data-testid="stMetricLabel"] {{
         color: var(--text-color-muted);
         font-size: 0.9rem;
+        font-weight: 500; /* Slightly bolder */
+        text-transform: uppercase; /* More 'dashboard' like */
     }}
     [data-testid="stMetricValue"] {{
         color: var(--text-color);
@@ -312,6 +317,18 @@ def format_hour(timestamp):
         return "N/A"
 
 
+# --- NEW: Helper for Wind Direction ---
+def degrees_to_cardinal(d):
+    """Converts wind degrees to a cardinal direction."""
+    try:
+        d = float(d)
+        dirs = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW']
+        ix = int((d + 11.25) / 22.5)
+        return dirs[ix % 16]
+    except (ValueError, TypeError):
+        return "N/A"
+
+
 def get_weather_icon(icon_code):
     """Maps OpenWeather icon codes to Streamlit emojis."""
     icon_map = {
@@ -336,13 +353,13 @@ if 'current_location' not in st.session_state:
 
 with st.sidebar:
     st.title("ClimateSense")
-    st.image("https://placehold.co/200x100/101419/FFFFFF?text=Logo", width='stretch')
+    # Using use_container_width=True for the image
+    st.image("https://placehold.co/200x100/101419/FFFFFF?text=ClimateSense", use_container_width=True)
 
     # --- NEW: Theme Toggle ---
     st.toggle("Dark Mode", value=st.session_state.dark_mode, key="dark_mode")
 
     st.markdown("---")
-    st.subheader("Controls")
 
     # --- Location Search ---
     st.subheader("Search Location")
@@ -351,7 +368,8 @@ with st.sidebar:
         value=st.session_state.current_location
     )
 
-    if st.button("Search Location", width='stretch'):
+    # --- FIX: Replaced use_column_width with use_container_width ---
+    if st.button("Search Location", use_container_width=True):
         if search_text:
             st.session_state.current_location = search_text
             write_control_file(search_text)
@@ -360,12 +378,13 @@ with st.sidebar:
         else:
             st.warning("Please enter a location.")
 
-    if st.button("Refresh Data", width='stretch'):
+    # --- FIX: Replaced use_column_width with use_container_width ---
+    if st.button("Refresh Data", use_container_width=True):
         st.cache_data.clear()
         st.success("Data refreshed!")
 
     st.caption(f"Last UI load: {datetime.now().strftime('%H:%M:%S')}")
-    st.caption("Dashboard auto-refreshes every 60s.")
+    st.caption("Data cache refreshes every 60s.")
     st.markdown("---")
     st.subheader("Location Info")
     # We will add info here *after* loading data
@@ -395,20 +414,23 @@ if latest_entry is None:
             f"The backend is set to process this location. Please wait for its next run (this can be up to {LOOP_INTERVAL_SECONDS // 60} minutes) and then click 'Refresh Data'.")
 else:
 
-    # --- 9. TOP ROW: Current Weather & Map ---
-    # --- MODIFIED: Added min-height for better responsiveness ---
-    col1, col2 = st.columns([1, 2])
+    # --- 9. TOP ROW: (MODIFIED to 3-Column Layout) ---
+    col1, col2, col3 = st.columns([1.2, 1, 1.5])  # Balanced columns
 
+    # --- Card 1: Current Conditions ---
     with col1:
         st.subheader("Current Conditions")
-        with st.container(border=True, height=360):
+        with st.container(border=True, height=420):
             raw_data = latest_entry.get("raw_data", {})
             risk_report = latest_entry.get("risk_report", {})
             details = risk_report.get("details", {})
             main_weather = raw_data.get("main", {})
 
             icon = get_weather_icon(raw_data.get("weather", [{}])[0].get("icon"))
-            st.markdown(f"<div class='weather-icon'>{icon}</div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='weather-icon' style='text-align: center;'>{icon}</div>", unsafe_allow_html=True)
+            st.caption(
+                f"<p style='text-align: center; font-size: 1.1rem;'><b>{details.get('description', 'N/A').title()}</b></p>",
+                unsafe_allow_html=True)
 
             c1, c2 = st.columns(2)
             c1.metric("Temperature", f"{details.get('temp_c', 'N/A')} °C")
@@ -416,17 +438,33 @@ else:
             c1.metric("Wind Speed", f"{details.get('wind_speed_ms', 'N/A')} m/s")
             c2.metric("Humidity", f"{main_weather.get('humidity', 'N/A')}%")
 
-            st.caption(f"**Description:** {details.get('description', 'N/A')}")
-
+    # --- Card 2: Air Quality ---
     with col2:
-        st.subheader("Location & Risk Trend")
-        with st.container(border=True, height=360):
+        st.subheader("Air Quality")
+        with st.container(border=True, height=420):
+            air_quality_report = latest_entry.get("air_quality_report", {})
+            aqi = air_quality_report.get('aqi', 'N/A')
+            aqi_analysis = air_quality_report.get('analysis', 'N/A')
+
+            st.metric("Air Quality Index (AQI)", aqi)
+            st.markdown(f"**Analysis:**")
+            st.info(aqi_analysis)  # Use info box for prominence
+
+            # Placeholder for a gauge chart if desired
+            st.markdown("---")
+            st.caption("AQI: 1=Good, 2=Fair, 3=Moderate, 4=Poor, 5=Very Poor")
+
+    # --- Card 3: Location & Risk ---
+    with col3:
+        st.subheader("Location & Risk")
+        with st.container(border=True, height=420):
             raw_data = latest_entry.get("raw_data", {})  # Re-get for safety
             coord = raw_data.get("coord", {})
             trend_analysis = latest_entry.get("risk_report", {}).get("trend", "N/A")
 
             map_data = pd.DataFrame({'lat': [coord.get('lat', 0)], 'lon': [coord.get('lon', 0)]})
-            st.map(map_data, zoom=9, width='stretch')
+            # --- FIX: Ensure use_container_width is used here too ---
+            st.map(map_data, zoom=9, use_container_width=True)
             st.metric("Risk Trend", trend_analysis)
 
             # --- Add Sidebar Location Info ---
@@ -435,13 +473,14 @@ else:
                 st.metric("Country", sys_data.get('country', 'N/A'))
                 st.metric("Sunrise", format_time(sys_data.get('sunrise')))
                 st.metric("Sunset", format_time(sys_data.get('sunset')))
-                st.metric("Latitude", coord.get('lat', 'N/A'))
-                st.metric("Longitude", coord.get('lon', 'N/A'))
+                st.metric("Latitude", f"{coord.get('lat', 'N/A'):.4f}")
+                st.metric("Longitude", f"{coord.get('lon', 'N/A'):.4f}")
 
-    # --- 10. FORECAST & ALERTS TABS ---
+    # --- 10. FORECAST & ALERTS TABS (MODIFIED) ---
     st.header("Analysis & Forecast")
 
-    tab1, tab2 = st.tabs(["Alerts & News", "5-Day Forecast"])
+    # --- MODIFIED: Replaced Satellite with All Weather Details ---
+    tab1, tab2, tab3 = st.tabs(["Alerts & News", "5-Day Forecast", "All Weather Details"])
 
     # --- Tab 1: Alerts & News ---
     with tab1:
@@ -454,7 +493,7 @@ else:
 
         col1, col2 = st.columns(2)
         with col1:
-            st.subheader("📋 Recommended Actions")
+            st.subheader("📋 Holistic Recommendations")
             with st.container(border=True, height=300):
                 recommendations = latest_entry.get("recommendations", "No actions required.")
                 st.info(recommendations)
@@ -477,7 +516,6 @@ else:
                             st.write(line)
 
     # --- Tab 2: 5-Day Forecast (Daily) ---
-    # --- REBUILT for Responsiveness ---
     with tab2:
         forecast_data = latest_entry.get("forecast_data")
         if forecast_data:
@@ -513,6 +551,34 @@ else:
         else:
             st.warning("No forecast data available in the log. (Agent 1.5 may have failed or is still running)")
 
+    # --- NEW: Tab 3 (All Weather Details) ---
+    with tab3:
+        st.subheader("All Current Weather Details")
+        st.caption("A detailed breakdown of all data collected from the 'Current Weather' API call.")
+
+        with st.container(border=True):
+            raw_data = latest_entry.get("raw_data", {})
+            wind_data = raw_data.get("wind", {})
+            main_data = raw_data.get("main", {})
+            sys_data = raw_data.get("sys", {})
+
+            detail_col1, detail_col2 = st.columns(2)
+
+            with detail_col1:
+                st.subheader("Wind & Atmosphere")
+                st.metric(
+                    "Wind Direction",
+                    f"{degrees_to_cardinal(wind_data.get('deg', 'N/A'))} ({wind_data.get('deg', 'N/A')}°)"
+                )
+                st.metric("Pressure", f"{main_data.get('pressure', 'N/A')} hPa")
+                st.metric("Cloudiness", f"{raw_data.get('clouds', {}).get('all', 'N/A')}%")
+
+            with detail_col2:
+                st.subheader("Daylight & Visibility")
+                st.metric("Visibility", f"{raw_data.get('visibility', 'N/A')} meters")
+                st.metric("Sunrise", format_time(sys_data.get('sunrise')))
+                st.metric("Sunset", format_time(sys_data.get('sunset')))
+
     # --- 11. RAW DATA LOG (MODIFIED) ---
     with st.expander("Show Full Processed Data Log (Filtered)"):
         try:
@@ -520,17 +586,17 @@ else:
             df_display['Risk Level'] = df_display['risk_report'].apply(lambda x: x.get('risk_level', 'N/A'))
             df_display['Reason'] = df_display['risk_report'].apply(lambda x: x.get('reasoning', 'N/A'))
             df_display['Trend'] = df_display['risk_report'].apply(lambda x: x.get('trend', 'N/A'))
-            df_display['News Summary'] = df['analyzed_news']
+            # Add new data
+            df_display['AQI Analysis'] = df_display['air_quality_report'].apply(lambda x: x.get('analysis', 'N/A'))
+
+            # --- MODIFIED: Removed Satellite, Added use_container_width ---
             st.dataframe(df_display[
-                             ['timestamp', 'city', 'Risk Level', 'Reason', 'Trend', 'recommendations', 'News Summary']
-                         ], width='stretch')
+                             ['timestamp', 'city', 'Risk Level', 'Reason', 'Trend', 'AQI Analysis',
+                              'recommendations', 'analyzed_news']
+                         ], use_container_width=True)
         except Exception as e:
             st.error(f"Error processing data frame: {e}")
             st.dataframe(df)
 
 # --- 12. Auto-refresh (REMOVED) ---
-# The time.sleep() and st.rerun() commands were blocking the app's
-# rendering thread, causing visual bugs and unresponsiveness.
-# The app will now rely on the @st.cache_data(ttl=60) decorator
-# on the load_data() function, which correctly refreshes the data
-# every 60 seconds when the user interacts with the app.
+# ... (no code here)
