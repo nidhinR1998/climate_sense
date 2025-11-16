@@ -1,0 +1,52 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  # --- 1. The Backend Agent Service ---
+  agent:
+    build: .
+    # Use the script to start the agent loop
+    command: /bin/bash -c "chmod +x start.sh && ./start.sh"
+    container_name: climatesense_agent
+
+    # Environment variables for the agent (Replace with your actual keys)
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - WEATHER_API_KEY=${WEATHER_API_KEY}
+      - NEWS_API_KEY=${NEWS_API_KEY}
+      # Add email credentials if you plan to use the email feature
+      # - EMAIL_USER=${EMAIL_USER}
+      # - EMAIL_PASS=${EMAIL_PASS}
+      # - EMAILS_TO_NOTIFY=${EMAILS_TO_NOTIFY}
+      # - EMAIL_HOST=${EMAIL_HOST}
+      # - EMAIL_PORT=${EMAIL_PORT}
+
+    # Shared volume for memory and control files
+    volumes:
+      - ./memory_log.json:/app/memory_log.json
+      - ./control_file.json:/app/control_file.json
+      - ./start.sh:/app/start.sh # Copy the startup script
+
+    # Ensure the dashboard starts only after the agent is ready
+    depends_on:
+      - dashboard
+
+  # --- 2. The Frontend Dashboard Service ---
+  dashboard:
+    build: .
+    # Command to run Streamlit
+    command: streamlit run dashboard.py --server.port 8501 --server.enableCORS false
+    container_name: climatesense_dashboard
+    ports:
+      - "8501:8501" # Map the container port to the host port
+
+    # Shared volume for memory and control files
+    volumes:
+      - ./memory_log.json:/app/memory_log.json
+      - ./control_file.json:/app/control_file.json
+
+    # Ensures the backend environment variables are also available for the dashboard
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - WEATHER_API_KEY=${WEATHER_API_KEY}
+      - NEWS_API_KEY=${NEWS_API_KEY}
