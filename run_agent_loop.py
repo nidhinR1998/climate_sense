@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 import time
 from datetime import datetime, timedelta
 import math
-import traceback  # NEW: For better error logging
+import traceback
 
 # --- IMPORTS FOR PDF & EMAIL & NEWS ---
 import smtplib
@@ -36,7 +36,7 @@ genai.configure(api_key=GOOGLE_API_KEY)
 llm_model_flash_lite = genai.GenerativeModel('models/gemini-2.5-flash-lite')
 # Advanced reasoning model for complex synthesis, trend analysis, and prioritization
 llm_model_pro = genai.GenerativeModel('models/gemini-pro-latest')
-# Multimodal model for image/icon analysis (Agent 12) - FIX: Added missing model definition
+# Multimodal model for image/icon analysis (Agent 12)
 llm_model_vision = genai.GenerativeModel('models/gemini-2.5-flash')
 
 newsapi = NewsApiClient(api_key=NEWS_API_KEY)
@@ -48,7 +48,7 @@ LOOP_INTERVAL_SECONDS = 3600
 LOCATION_CHECK_INTERVAL_SECONDS = 1
 
 
-# --- NEW: Function to read control file (No Change) ---
+# --- NEW: Function to read control file ---
 def get_target_location() -> str:
     """Reads the target location from the control file."""
     if not os.path.exists(CONTROL_FILE):
@@ -67,7 +67,7 @@ def get_target_location() -> str:
         return DEFAULT_LOCATION
 
 
-# --- NEW: Function to "sleep" but wake up to check for changes (No Change) ---
+# --- NEW: Function to "sleep" but wake up to check for changes ---
 def smart_sleep_and_watch(duration_seconds: int, check_interval_seconds: int, location_at_start_of_sleep: str):
     """
     Sleeps for 'duration_seconds' but wakes up every 'check_interval_seconds'
@@ -600,7 +600,7 @@ def agent_10_satellite_analyzer(image_data: dict) -> dict:
 # --- NEW AGENT 11: Alert Prioritizer (Final Risk Classification) ---
 def agent_11_alert_prioritizer(risk_reports: dict) -> str:
     """Agent 11: Uses PRO LLM to determine the single, final, overriding risk level and priority."""
-    print("[Agent 11] Determining final risk level and priority...")
+    print("[Agent 11] Determining final risk level and priority with PRO model...")
 
     # Map risk words to numerical score for the prompt
     risk_map = {"EXTREME": 5, "HIGH": 4, "MODERATE": 3, "LOW": 2, "NONE": 1}
@@ -625,6 +625,7 @@ def agent_11_alert_prioritizer(risk_reports: dict) -> str:
     Format: [FINAL LEVEL]: [Reasoning]
     """
     try:
+        # Use the PRO model for this critical prioritization
         response = llm_model_pro.generate_content(prompt)
         result = response.text.strip()
         print(f"[Agent 11] Final Risk: {result}")
@@ -666,6 +667,28 @@ def agent_12_icon_analyzer(icon_code: str, weather_desc: str) -> str:
     except Exception as e:
         print(f"[Agent 12] ERROR: {e}")
         return "Error analyzing weather icon visually."
+
+
+# --- NEW AGENT 13: Live Radar Fetcher (for animated map tiles) ---
+def agent_13_live_radar_fetcher(lat: float, lon: float, api_key: str) -> dict:
+    """Agent 13: Constructs the URL for live animated precipitation radar tiles.
+    Uses OpenWeatherMap's tile structure.
+    """
+    print("[Agent 13] Fetching live radar tile configuration...")
+
+    # We use the OpenWeatherMap tiles for precipitation (layer 'precipitation_new')
+    TILE_URL = f"https://tile.openweathermap.org/map/precipitation_new/{{z}}/{{x}}/{{y}}.png?appid={api_key}"
+
+    # Define a simple center point and zoom level for map initialization
+    center_lat = lat
+    center_lon = lon
+
+    print("[Agent 13] Radar configuration complete.")
+    return {
+        "center": [center_lat, center_lon],
+        "tile_url": TILE_URL,
+        "zoom": 9
+    }
 
 
 def agent_4_broadcast_agent(risk_report: dict, recommendations: str):
@@ -741,6 +764,35 @@ def agent_8_email_composer(log_entry: dict) -> dict:
         return {
             "subject": subject,
             "html_body": f"Risk Level: {final_level}\nTrend: {log_entry['risk_report']['trend']}"
+        }
+
+
+def agent_10_satellite_analyzer(image_data: dict) -> dict:
+    """Agent 10: Uses FLASH-LITE LLM to provide a strategic analysis of satellite data."""
+    print("[Agent 10] Analyzing satellite data...")
+
+    prompt = f"""
+    You are a remote sensing analyst. Your satellite has provided the
+    following basic description of a target area:
+    "{image_data['description']}"
+
+    Provide a 1-2 sentence strategic analysis for a safety dashboard.
+    What does this imply for the local area? Focus on risks like fire, heat, or visibility.
+    Example: "Analysis: Clear skies confirm ideal conditions, but also high UV risk."
+    """
+    try:
+        response = llm_model_flash_lite.generate_content(prompt)
+        analysis = response.text.strip()
+        print("[Agent 10] Satellite analysis complete.")
+        return {
+            "image_url": image_data['image_url'],
+            "analysis": analysis
+        }
+    except Exception as e:
+        print(f"[Agent 10] ERROR: {e}")
+        return {
+            "image_url": image_data['image_url'],
+            "analysis": "Error analyzing satellite data."
         }
 
 
@@ -1006,29 +1058,29 @@ if __name__ == "__main__":
                 lat = coord.get("lat")
                 lon = coord.get("lon")
 
-                # --- Advanced Data Fetching ---
+                # --- Advanced Data Fetching (FLASH-LITE tier) ---
                 raw_aqi_data = agent_1_6_air_quality_fetcher(lat, lon, WEATHER_API_KEY)
-                advanced_fetch_data = agent_1_7_advanced_fetcher(lat, lon, WEATHER_API_KEY)  # NEW FETCHER
+                advanced_fetch_data = agent_1_7_advanced_fetcher(lat, lon, WEATHER_API_KEY)
 
-                # --- CLASSIFICATION & ANALYSIS ---
+                # --- CLASSIFICATION & ANALYSIS (Code/FLASH-LITE tier) ---
                 risk_report_dict = agent_2_risk_classifier(weather_json)
 
                 # Extract details for heat classification
                 temp_c = risk_report_dict['details']['temp_c']
                 humidity = risk_report_dict['details']['humidity']
-                heat_risk_report = agent_2_7_heat_classifier(temp_c, humidity)  # NEW CLASSIFIER
+                heat_risk_report = agent_2_7_heat_classifier(temp_c, humidity)
 
                 air_quality_report = agent_2_5_air_quality_analyzer(raw_aqi_data, advanced_fetch_data)
 
-                # --- DATA VALIDATION ---
-                data_validation_result = agent_3_5_data_validator(risk_report_dict, air_quality_report)  # NEW VALIDATOR
+                # --- DATA VALIDATION (FLASH-LITE tier) ---
+                data_validation_result = agent_3_5_data_validator(risk_report_dict, air_quality_report)
 
-                # --- TREND AND ICON ANALYSIS ---
+                # --- TREND AND ICON ANALYSIS (FLASH/VISION tier) ---
                 current_desc = risk_report_dict['details']['description']
                 icon_code = weather_json.get("weather", [{}])[0].get("icon", "N/A")
-                icon_analysis = agent_12_icon_analyzer(icon_code, current_desc)  # NEW MULTIMODAL AGENT
+                icon_analysis = agent_12_icon_analyzer(icon_code, current_desc)
 
-                # Package all risk reports for final prioritization and trend analysis
+                # Package all risk reports for final prioritization
                 risk_report_dict.update({
                     "air_quality_report": air_quality_report,
                     "heat_risk_report": heat_risk_report,
@@ -1036,28 +1088,41 @@ if __name__ == "__main__":
                     "heat_risk": heat_risk_report['heat_risk']
                 })
 
-                # --- FINAL RISK PRIORITIZATION ---
-                final_risk_result = agent_11_alert_prioritizer(risk_report_dict)  # NEW PRIORITIZER
+                # --- 1. FINAL RISK PRIORITIZATION (PRO tier) ---
+                final_risk_result = agent_11_alert_prioritizer(risk_report_dict)
                 final_level = final_risk_result.split(':')[0].strip()
 
                 # Update risk dict with final data before saving/trending
                 risk_report_dict['final_level'] = final_level
                 risk_report_dict['final_reasoning'] = final_risk_result.split(':', 1)[-1].strip()
 
-                # --- TREND ANALYSIS (uses final_level in memory) ---
+                # --- QUOTA MANAGEMENT WAIT 1/2 ---
+                print("[Main] Waiting 30 seconds to respect Gemini-Pro 2 RPM limit...")
+                time.sleep(30)
+                # -------------------------------
+
+                # --- 2. TREND ANALYSIS (PRO tier) ---
                 # NOTE: The trend agent now expects the new final_level to be in the dict it receives
                 trend_analysis = agent_5_trend_forecaster(risk_report_dict, MEMORY_FILE, CITY_NAME)
                 risk_report_dict['trend'] = trend_analysis
 
-                # --- RECOMMENDATIONS ---
+                # --- QUOTA MANAGEMENT WAIT 2/2 ---
+                print("[Main] Waiting 30 seconds to respect Gemini-Pro 2 RPM limit...")
+                time.sleep(30)
+                # -------------------------------
+
+                # --- 3. RECOMMENDATIONS (PRO tier) ---
                 action_list = agent_3_action_recommender(risk_report_dict, heat_risk_report, air_quality_report,
                                                          forecast_json)
 
-                # --- NEWS & SATELLITE ---
+                # --- NEWS & SATELLITE (FLASH-LITE tier) ---
                 raw_articles = agent_6_news_fetcher(CITY_NAME, current_desc)
                 analyzed_news_summary = agent_7_news_analyzer(raw_articles)
                 sim_satellite_data = agent_9_satellite_image_fetcher(CITY_NAME, current_desc)
                 satellite_analysis_report = agent_10_satellite_analyzer(sim_satellite_data)
+
+                # --- LIVE RADAR DATA (API tier) ---
+                live_radar_data = agent_13_live_radar_fetcher(lat, lon, WEATHER_API_KEY)
 
                 # 8. Broadcast to console
                 agent_4_broadcast_agent(risk_report_dict, action_list)
@@ -1082,10 +1147,11 @@ if __name__ == "__main__":
                     "raw_data": weather_json,
                     "forecast_data": forecast_json,
                     "air_quality_report": air_quality_report,
-                    "advanced_fetch_data": advanced_fetch_data,  # NEW FETCH DATA
-                    "data_validation": data_validation_result,  # NEW VALIDATION
-                    "icon_analysis": icon_analysis,  # NEW ICON ANALYSIS
-                    "satellite_analysis": satellite_analysis_report
+                    "advanced_fetch_data": advanced_fetch_data,
+                    "data_validation": data_validation_result,
+                    "icon_analysis": icon_analysis,
+                    "satellite_analysis": satellite_analysis_report,
+                    "live_radar_data": live_radar_data
                 }
 
                 # 10. Save to Memory Bank

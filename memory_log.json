@@ -1368,5 +1368,1423 @@
             "image_url": "https://placehold.co/600x400/101419/555555?text=Satellite+View+Kochi",
             "analysis": "Analysis: The clear skies and lack of major formations indicate excellent visibility and reduced risk of immediate weather-related hazards. However, sustained clear conditions could exacerbate fire ignition potential and increase exposure to solar radiation."
         }
+    },
+    {
+        "timestamp": "2025-11-17T00:41:41.073140",
+        "city": "Kochi,IN",
+        "final_risk_level": "MODERATE",
+        "risk_report": {
+            "primary_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 24.99,
+                "wind_speed_ms": 3.5,
+                "description": "overcast clouds",
+                "humidity": 87
+            },
+            "air_quality_report": {
+                "aqi": 3,
+                "analysis": "The air quality is moderate and is expected to remain so tomorrow, with PM2.5 levels within moderate limits and Ozone levels approaching unhealthy levels, so individuals with respiratory sensitivities should consider reducing prolonged outdoor exertion.",
+                "tomorrow_aqi": 3
+            },
+            "heat_risk_report": {
+                "heat_index_c": 25.0,
+                "heat_risk": "LOW",
+                "warning": "No heat risk."
+            },
+            "heat_risk": "LOW",
+            "final_level": "MODERATE",
+            "final_reasoning": "Error determining final priority. Defaulting to highest local risk.",
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Error generating recommendations.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.2602,
+                "lat": 9.9399
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 24.99,
+                "feels_like": 25.82,
+                "temp_min": 24.99,
+                "temp_max": 24.99,
+                "pressure": 1012,
+                "humidity": 87,
+                "sea_level": 1012,
+                "grnd_level": 1011
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 3.5,
+                "deg": 346,
+                "gust": 3.85
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763320188,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763340616,
+                "sunset": 1763382587
+            },
+            "timezone": 19800,
+            "id": 1273874,
+            "name": "Kochi",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763326800,
+                    "temp_min": 24.5,
+                    "temp_max": 27.53,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763413200,
+                    "temp_min": 23.97,
+                    "temp_max": 27.39,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 24.3,
+                    "temp_max": 27.6,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 23.46,
+                    "temp_max": 28.01,
+                    "icon": "04n",
+                    "pop": 0.18
+                },
+                {
+                    "dt": 1763672400,
+                    "temp_min": 24.33,
+                    "temp_max": 27.46,
+                    "icon": "10n",
+                    "pop": 0.98
+                }
+            ]
+        },
+        "air_quality_report": {
+            "aqi": 3,
+            "analysis": "The air quality is moderate and is expected to remain so tomorrow, with PM2.5 levels within moderate limits and Ozone levels approaching unhealthy levels, so individuals with respiratory sensitivities should consider reducing prolonged outdoor exertion.",
+            "tomorrow_aqi": 3
+        },
+        "advanced_fetch_data": {
+            "uv_index": 0,
+            "tomorrow_aqi": 3
+        },
+        "data_validation": "Data is consistent and reliable.",
+        "icon_analysis": "The single cloud icon (\u2601\ufe0f) underrepresents the full sky coverage of 'overcast clouds', potentially leading to an underestimation of dimmer ambient light conditions.",
+        "satellite_analysis": {
+            "image_url": "https://placehold.co/600x400/101419/555555?text=Satellite+View+Kochi",
+            "analysis": "Analysis: Clear skies and no major cloud formations suggest excellent visibility for operations, but also indicate a heightened risk of solar radiation and potentially rapid drying of surface materials, increasing fire ignition potential."
+        },
+        "live_radar_data": {
+            "center": [
+                9.9399,
+                76.2602
+            ],
+            "tile_url": "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=fbce4f02be33df46be35fd0e71226460",
+            "zoom": 9
+        }
+    },
+    {
+        "timestamp": "2025-11-17T00:49:43.449847",
+        "city": "Kochi,IN",
+        "final_risk_level": "MODERATE",
+        "risk_report": {
+            "primary_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 24.99,
+                "wind_speed_ms": 3.5,
+                "description": "overcast clouds",
+                "humidity": 87
+            },
+            "air_quality_report": {
+                "aqi": 3,
+                "analysis": "The air quality is moderate and expected to remain so, so people with respiratory sensitivities should continue to be mindful of their outdoor activity.",
+                "tomorrow_aqi": 3
+            },
+            "heat_risk_report": {
+                "heat_index_c": 25.0,
+                "heat_risk": "LOW",
+                "warning": "No heat risk."
+            },
+            "heat_risk": "LOW",
+            "final_level": "MODERATE",
+            "final_reasoning": "The Air Quality Index (3) is the highest risk score, dictating the final priority level.",
+            "trend": "While the air quality has remained consistently excellent, the overall risk has recently elevated to and is now holding steady at a MODERATE level."
+        },
+        "recommendations": "*   Given the moderate air quality, individuals with respiratory sensitivities (e.g., asthma) should consider reducing prolonged or strenuous outdoor activities.\n*   For the general public, overall conditions are favorable for most outdoor plans, as there is no immediate heat risk and weather is calm, with temperatures remaining below 29\u00b0C.\n*   Remain aware that the overall community safety risk is holding at a moderate level, primarily due to air quality. Continue to monitor local advisories, especially if you have health concerns.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.2602,
+                "lat": 9.9399
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 24.99,
+                "feels_like": 25.82,
+                "temp_min": 24.99,
+                "temp_max": 24.99,
+                "pressure": 1012,
+                "humidity": 87,
+                "sea_level": 1012,
+                "grnd_level": 1011
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 3.5,
+                "deg": 346,
+                "gust": 3.85
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763320188,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763340616,
+                "sunset": 1763382587
+            },
+            "timezone": 19800,
+            "id": 1273874,
+            "name": "Kochi",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763326800,
+                    "temp_min": 24.5,
+                    "temp_max": 27.53,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763413200,
+                    "temp_min": 23.97,
+                    "temp_max": 27.39,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 24.3,
+                    "temp_max": 27.6,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 23.46,
+                    "temp_max": 28.01,
+                    "icon": "04n",
+                    "pop": 0.18
+                },
+                {
+                    "dt": 1763672400,
+                    "temp_min": 24.33,
+                    "temp_max": 27.46,
+                    "icon": "10n",
+                    "pop": 0.98
+                }
+            ]
+        },
+        "air_quality_report": {
+            "aqi": 3,
+            "analysis": "The air quality is moderate and expected to remain so, so people with respiratory sensitivities should continue to be mindful of their outdoor activity.",
+            "tomorrow_aqi": 3
+        },
+        "advanced_fetch_data": {
+            "uv_index": 0,
+            "tomorrow_aqi": 3
+        },
+        "data_validation": "Data is consistent and reliable.",
+        "icon_analysis": "The generic cloud icon \u2601\ufe0f subtly underrepresents the widespread, uniform sky coverage and increased potential for precipitation implied by 'overcast clouds'.",
+        "satellite_analysis": {
+            "image_url": "https://placehold.co/600x400/101419/555555?text=Satellite+View+Kochi",
+            "analysis": "Analysis: Clear skies and lack of cloud cover indicate excellent visibility and minimal risk of precipitation. However, this also suggests a high likelihood of direct solar radiation, increasing the risk of heat stress and potential for rapid fire spread if ignition sources are present."
+        },
+        "live_radar_data": {
+            "center": [
+                9.9399,
+                76.2602
+            ],
+            "tile_url": "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=fbce4f02be33df46be35fd0e71226460",
+            "zoom": 9
+        }
+    },
+    {
+        "timestamp": "2025-11-17T01:51:43.499987",
+        "city": "Kochi,IN",
+        "final_risk_level": "MODERATE",
+        "risk_report": {
+            "primary_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 24.99,
+                "wind_speed_ms": 1.77,
+                "description": "overcast clouds",
+                "humidity": 90
+            },
+            "air_quality_report": {
+                "aqi": 3,
+                "analysis": "The air quality is moderate and expected to remain so, with PM2.5 levels suggesting it's a good day for outdoor activity, though ozone levels are significant for sensitive individuals.",
+                "tomorrow_aqi": 3
+            },
+            "heat_risk_report": {
+                "heat_index_c": 25.0,
+                "heat_risk": "LOW",
+                "warning": "No heat risk."
+            },
+            "heat_risk": "LOW",
+            "final_level": "MODERATE",
+            "final_reasoning": "The Air Quality Index score of 3 is the highest risk factor.",
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "*   While air quality is generally good for outdoor activities, individuals with respiratory sensitivities (like asthma) should monitor for symptoms and consider reducing prolonged or strenuous exertion outdoors due to significant ozone levels.\n*   Take advantage of the calm weather and low heat-risk conditions, as no special precautions are needed for the general population. Temperatures are forecast to remain comfortable.\n*   Overall safety conditions are favorable and expected to remain stable into tomorrow; continue to monitor air quality advisories if you belong to a sensitive group.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.2602,
+                "lat": 9.9399
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 24.99,
+                "feels_like": 25.89,
+                "temp_min": 24.99,
+                "temp_max": 24.99,
+                "pressure": 1011,
+                "humidity": 90,
+                "sea_level": 1011,
+                "grnd_level": 1010
+            },
+            "visibility": 6431,
+            "wind": {
+                "speed": 1.77,
+                "deg": 33,
+                "gust": 2.26
+            },
+            "clouds": {
+                "all": 96
+            },
+            "dt": 1763324010,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763340616,
+                "sunset": 1763382587
+            },
+            "timezone": 19800,
+            "id": 1273874,
+            "name": "Kochi",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763326800,
+                    "temp_min": 24.5,
+                    "temp_max": 27.53,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763413200,
+                    "temp_min": 23.97,
+                    "temp_max": 27.39,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 24.3,
+                    "temp_max": 27.6,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 23.46,
+                    "temp_max": 28.01,
+                    "icon": "04n",
+                    "pop": 0.18
+                },
+                {
+                    "dt": 1763672400,
+                    "temp_min": 24.33,
+                    "temp_max": 27.46,
+                    "icon": "10n",
+                    "pop": 0.98
+                }
+            ]
+        },
+        "air_quality_report": {
+            "aqi": 3,
+            "analysis": "The air quality is moderate and expected to remain so, with PM2.5 levels suggesting it's a good day for outdoor activity, though ozone levels are significant for sensitive individuals.",
+            "tomorrow_aqi": 3
+        },
+        "advanced_fetch_data": {
+            "uv_index": 0,
+            "tomorrow_aqi": 3
+        },
+        "data_validation": "Data is consistent and reliable.",
+        "icon_analysis": "The \u2601\ufe0f icon accurately represents overcast conditions, but remember that significant UV radiation can still penetrate cloud cover.",
+        "satellite_analysis": {
+            "image_url": "https://placehold.co/600x400/101419/555555?text=Satellite+View+Kochi",
+            "analysis": "Analysis: Clear skies and no major cloud formations indicate excellent visibility and reduced immediate risk of weather-related disruptions. However, this also suggests potential for significant solar radiation and heat build-up, increasing fire risk if vegetation is dry."
+        },
+        "live_radar_data": {
+            "center": [
+                9.9399,
+                76.2602
+            ],
+            "tile_url": "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=fbce4f02be33df46be35fd0e71226460",
+            "zoom": 9
+        }
+    },
+    {
+        "timestamp": "2025-11-17T02:53:42.240614",
+        "city": "Kochi,IN",
+        "final_risk_level": "MODERATE",
+        "risk_report": {
+            "primary_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 23.99,
+                "wind_speed_ms": 2.31,
+                "description": "overcast clouds",
+                "humidity": 90
+            },
+            "air_quality_report": {
+                "aqi": 3,
+                "analysis": "The air quality is moderate today and expected to remain so tomorrow, so everyone can generally enjoy outdoor activities, but those with respiratory issues should still be mindful.",
+                "tomorrow_aqi": 3
+            },
+            "heat_risk_report": {
+                "heat_index_c": 24.0,
+                "heat_risk": "LOW",
+                "warning": "No heat risk."
+            },
+            "heat_risk": "LOW",
+            "final_level": "MODERATE",
+            "final_reasoning": "The Air Quality Index of 3 is the highest score, setting the priority to MODERATE.",
+            "trend": "The overall risk has stabilized at a MODERATE level, while the air quality has remained consistently good."
+        },
+        "recommendations": "*   **Take advantage of favorable conditions for outdoor activities.** The immediate risk from weather and extreme heat is low, with calm conditions and comfortable temperatures expected over the next five days.\n\n*   **Enjoy excellent air quality, but remain mindful.** With an Air Quality Index (AQI) of 3, conditions are ideal for being outdoors. However, individuals with significant respiratory sensitivities should continue to follow their standard health management plans.\n\n*   **Practice routine safety during outdoor recreation.** Even in low-risk conditions, it is always wise to stay hydrated, use sun protection, and be aware of your surroundings when spending extended time outside.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.2602,
+                "lat": 9.9399
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 23.99,
+                "feels_like": 24.79,
+                "temp_min": 23.99,
+                "temp_max": 23.99,
+                "pressure": 1010,
+                "humidity": 90,
+                "sea_level": 1010,
+                "grnd_level": 1010
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 2.31,
+                "deg": 112,
+                "gust": 3.42
+            },
+            "clouds": {
+                "all": 98
+            },
+            "dt": 1763327964,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763340616,
+                "sunset": 1763382587
+            },
+            "timezone": 19800,
+            "id": 1273874,
+            "name": "Kochi",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763337600,
+                    "temp_min": 24.3,
+                    "temp_max": 27.53,
+                    "icon": "10d",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763413200,
+                    "temp_min": 23.97,
+                    "temp_max": 27.39,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 24.3,
+                    "temp_max": 27.6,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 23.46,
+                    "temp_max": 28.01,
+                    "icon": "04n",
+                    "pop": 0.18
+                },
+                {
+                    "dt": 1763672400,
+                    "temp_min": 24.33,
+                    "temp_max": 27.46,
+                    "icon": "10n",
+                    "pop": 0.98
+                },
+                {
+                    "dt": 1763758800,
+                    "temp_min": 24.66,
+                    "temp_max": 24.66,
+                    "icon": "10n",
+                    "pop": 1
+                }
+            ]
+        },
+        "air_quality_report": {
+            "aqi": 3,
+            "analysis": "The air quality is moderate today and expected to remain so tomorrow, so everyone can generally enjoy outdoor activities, but those with respiratory issues should still be mindful.",
+            "tomorrow_aqi": 3
+        },
+        "advanced_fetch_data": {
+            "uv_index": 0,
+            "tomorrow_aqi": 3
+        },
+        "data_validation": "Data is consistent and reliable.",
+        "icon_analysis": "The cloud icon accurately represents overcast conditions, indicating no immediate weather-related safety concerns.",
+        "satellite_analysis": {
+            "image_url": "https://placehold.co/600x400/101419/555555?text=Satellite+View+Kochi",
+            "analysis": "Analysis: Clear skies and lack of cloud cover suggest excellent visibility, but also increase the risk of solar radiation exposure and potentially higher ground temperatures, posing a heat stress risk."
+        },
+        "live_radar_data": {
+            "center": [
+                9.9399,
+                76.2602
+            ],
+            "tile_url": "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=fbce4f02be33df46be35fd0e71226460",
+            "zoom": 9
+        }
+    },
+    {
+        "timestamp": "2025-11-17T11:06:51.224602",
+        "city": "Kochi,IN",
+        "final_risk_level": "HIGH",
+        "risk_report": {
+            "primary_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 29.99,
+                "wind_speed_ms": 0.77,
+                "description": "broken clouds",
+                "humidity": 78
+            },
+            "air_quality_report": {
+                "aqi": 3,
+                "analysis": "The air quality is moderate and expected to remain so, so sensitive individuals should limit prolonged or strenuous outdoor exertion today and tomorrow.",
+                "tomorrow_aqi": 3
+            },
+            "heat_risk_report": {
+                "heat_index_c": 37.1,
+                "heat_risk": "HIGH",
+                "warning": "Extreme Caution: Heat cramps or heat exhaustion possible."
+            },
+            "heat_risk": "HIGH",
+            "final_level": "HIGH",
+            "final_reasoning": "The Heat Risk Score of 4 (HIGH) is the highest score provided.",
+            "trend": "The overall risk has sharply escalated to HIGH, while the air quality has remained stable and excellent."
+        },
+        "recommendations": "*   **Prioritize staying cool and hydrated due to the HIGH heat risk.** Avoid strenuous outdoor activities, especially during peak afternoon hours. The heat index is 37.1\u00b0C, creating a risk of heat cramps or heat exhaustion.\n\n*   **Seek air-conditioned spaces and wear lightweight, light-colored clothing.** While general weather conditions are calm, the lack of wind will offer little relief from the extreme heat. Ensure you are drinking plenty of water throughout the day.\n\n*   **Sensitive individuals should take extra precautions.** Children, the elderly, and those with respiratory or cardiovascular conditions should limit prolonged or strenuous outdoor exertion today and tomorrow due to the combined stress of extreme heat and stable air quality conditions.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.2602,
+                "lat": 9.9399
+            },
+            "weather": [
+                {
+                    "id": 803,
+                    "main": "Clouds",
+                    "description": "broken clouds",
+                    "icon": "04d"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 29.99,
+                "feels_like": 36.99,
+                "temp_min": 29.99,
+                "temp_max": 29.99,
+                "pressure": 1013,
+                "humidity": 78,
+                "sea_level": 1013,
+                "grnd_level": 1013
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 0.77,
+                "deg": 80,
+                "gust": 0.9
+            },
+            "clouds": {
+                "all": 76
+            },
+            "dt": 1763357069,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763340616,
+                "sunset": 1763382587
+            },
+            "timezone": 19800,
+            "id": 1273874,
+            "name": "Kochi",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763359200,
+                    "temp_min": 24.75,
+                    "temp_max": 29.99,
+                    "icon": "10d",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763413200,
+                    "temp_min": 23.26,
+                    "temp_max": 26.45,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 24.24,
+                    "temp_max": 27.42,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 23.47,
+                    "temp_max": 27.84,
+                    "icon": "04d",
+                    "pop": 0.7
+                },
+                {
+                    "dt": 1763672400,
+                    "temp_min": 24.28,
+                    "temp_max": 27.7,
+                    "icon": "10n",
+                    "pop": 0.93
+                },
+                {
+                    "dt": 1763758800,
+                    "temp_min": 23.87,
+                    "temp_max": 25.31,
+                    "icon": "10n",
+                    "pop": 1
+                }
+            ]
+        },
+        "air_quality_report": {
+            "aqi": 3,
+            "analysis": "The air quality is moderate and expected to remain so, so sensitive individuals should limit prolonged or strenuous outdoor exertion today and tomorrow.",
+            "tomorrow_aqi": 3
+        },
+        "advanced_fetch_data": {
+            "uv_index": 4,
+            "tomorrow_aqi": 3
+        },
+        "data_validation": "Data is consistent and reliable.",
+        "icon_analysis": "The generic cloud icon \u2601\ufe0f might subtly downplay the extensive cloud cover described as 'broken clouds', which means a majority of the sky is obscured, not merely dotted with clouds.",
+        "satellite_analysis": {
+            "image_url": "https://placehold.co/600x400/101419/555555?text=Satellite+View+Kochi",
+            "analysis": "Analysis: Clear skies and lack of cloud cover indicate excellent visibility but elevate the risk of sun exposure and potentially heat stress due to direct solar radiation."
+        },
+        "live_radar_data": {
+            "center": [
+                9.9399,
+                76.2602
+            ],
+            "tile_url": "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=fbce4f02be33df46be35fd0e71226460",
+            "zoom": 9
+        }
+    },
+    {
+        "timestamp": "2025-11-18T00:13:40.319635",
+        "city": "Kochi,IN",
+        "final_risk_level": "MODERATE",
+        "risk_report": {
+            "primary_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 25.99,
+                "wind_speed_ms": 2.96,
+                "description": "overcast clouds",
+                "humidity": 88
+            },
+            "air_quality_report": {
+                "aqi": 3,
+                "analysis": "The air quality is moderate today and expected to remain so tomorrow, with elevated ozone levels, so everyone should consider limiting prolonged outdoor exertion.",
+                "tomorrow_aqi": 3
+            },
+            "heat_risk_report": {
+                "heat_index_c": 26.0,
+                "heat_risk": "LOW",
+                "warning": "No heat risk."
+            },
+            "heat_risk": "LOW",
+            "final_level": "MODERATE",
+            "final_reasoning": "The Air Quality Index (3) is the highest score, corresponding to a MODERATE level.",
+            "trend": "The risk has returned to moderate after a temporary spike to high, while the air quality has remained consistently stable."
+        },
+        "recommendations": "*   Limit prolonged or strenuous outdoor activities, especially for sensitive individuals. The air quality is moderate due to elevated ozone levels, a condition expected to persist through tomorrow.\n*   If you experience respiratory symptoms like coughing or shortness of breath while outdoors, move inside and reduce your exertion level.\n*   General weather conditions are calm and present a low risk. No heat warnings are in effect, with temperatures forecast to remain comfortable over the next five days.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.2602,
+                "lat": 9.9399
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 25.99,
+                "feels_like": 25.99,
+                "temp_min": 25.99,
+                "temp_max": 25.99,
+                "pressure": 1011,
+                "humidity": 88,
+                "sea_level": 1011,
+                "grnd_level": 1010
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 2.96,
+                "deg": 87,
+                "gust": 3.7
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763404575,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763427040,
+                "sunset": 1763468989
+            },
+            "timezone": 19800,
+            "id": 1273874,
+            "name": "Kochi",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763413200,
+                    "temp_min": 23.94,
+                    "temp_max": 25.52,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 23.99,
+                    "temp_max": 26.82,
+                    "icon": "10d",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 23.6,
+                    "temp_max": 28.07,
+                    "icon": "04d",
+                    "pop": 0.84
+                },
+                {
+                    "dt": 1763672400,
+                    "temp_min": 24.17,
+                    "temp_max": 27.78,
+                    "icon": "10d",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763758800,
+                    "temp_min": 24.14,
+                    "temp_max": 28.48,
+                    "icon": "10n",
+                    "pop": 1
+                }
+            ]
+        },
+        "air_quality_report": {
+            "aqi": 3,
+            "analysis": "The air quality is moderate today and expected to remain so tomorrow, with elevated ozone levels, so everyone should consider limiting prolonged outdoor exertion.",
+            "tomorrow_aqi": 3
+        },
+        "advanced_fetch_data": {
+            "uv_index": 0,
+            "tomorrow_aqi": 3
+        },
+        "data_validation": "Data is consistent and reliable.",
+        "icon_analysis": "The single cloud icon (\u2601\ufe0f) subtly understates the continuous, full-sky coverage of 'overcast clouds,' implying uniformly low ambient light with no direct sun, which could affect mood or outdoor lighting needs.",
+        "satellite_analysis": {
+            "image_url": "https://placehold.co/600x400/101419/555555?text=Satellite+View+Kochi",
+            "analysis": "Analysis: Clear skies and no cloud cover indicate excellent visibility, but also amplify the risk of heat exposure and potential for rapid wildfire spread if ignition sources are present."
+        },
+        "live_radar_data": {
+            "center": [
+                9.9399,
+                76.2602
+            ],
+            "tile_url": "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=fbce4f02be33df46be35fd0e71226460",
+            "zoom": 9
+        }
+    },
+    {
+        "timestamp": "2025-11-18T01:15:53.075438",
+        "city": "Kochi,IN",
+        "final_risk_level": "MODERATE",
+        "risk_report": {
+            "primary_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 25.99,
+                "wind_speed_ms": 4.27,
+                "description": "overcast clouds",
+                "humidity": 92
+            },
+            "air_quality_report": {
+                "aqi": 3,
+                "analysis": "Air quality is moderate today and expected to improve tomorrow, but given current PM2.5 levels, sensitive individuals should still consider limiting strenuous outdoor activity.",
+                "tomorrow_aqi": 2
+            },
+            "heat_risk_report": {
+                "heat_index_c": 26.0,
+                "heat_risk": "LOW",
+                "warning": "No heat risk."
+            },
+            "heat_risk": "LOW",
+            "final_level": "MODERATE",
+            "final_reasoning": "The Air Quality Index of 3 is the highest contributing risk factor, corresponding to a MODERATE level.",
+            "trend": "After a temporary increase to HIGH, the overall risk has returned to a MODERATE level while air quality has remained consistently stable."
+        },
+        "recommendations": "*   Sensitive individuals, including children, older adults, and those with respiratory or heart conditions, should consider limiting strenuous outdoor activity today due to moderate air quality (PM2.5).\n\n*   For the general public, conditions are favorable for most outdoor activities. The heat risk is low, and immediate weather conditions are calm.\n\n*   While current weather is calm, be aware that the overall risk has settled at a moderate level. Conditions are expected to be better tomorrow as air quality improves.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.2602,
+                "lat": 9.9399
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 25.99,
+                "feels_like": 25.99,
+                "temp_min": 25.99,
+                "temp_max": 25.99,
+                "pressure": 1010,
+                "humidity": 92,
+                "sea_level": 1010,
+                "grnd_level": 1009
+            },
+            "visibility": 1191,
+            "wind": {
+                "speed": 4.27,
+                "deg": 88,
+                "gust": 5.53
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763408560,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763427040,
+                "sunset": 1763468989
+            },
+            "timezone": 19800,
+            "id": 1273874,
+            "name": "Kochi",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763413200,
+                    "temp_min": 23.94,
+                    "temp_max": 25.99,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 23.84,
+                    "temp_max": 27.39,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 23.84,
+                    "temp_max": 28.21,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763672400,
+                    "temp_min": 24.29,
+                    "temp_max": 28.14,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763758800,
+                    "temp_min": 24.32,
+                    "temp_max": 27.16,
+                    "icon": "10n",
+                    "pop": 1
+                }
+            ]
+        },
+        "air_quality_report": {
+            "aqi": 3,
+            "analysis": "Air quality is moderate today and expected to improve tomorrow, but given current PM2.5 levels, sensitive individuals should still consider limiting strenuous outdoor activity.",
+            "tomorrow_aqi": 2
+        },
+        "advanced_fetch_data": {
+            "uv_index": 0,
+            "tomorrow_aqi": 2
+        },
+        "data_validation": "Data is consistent and reliable.",
+        "icon_analysis": "The single cloud icon \u2601\ufe0f subtly underrepresents the full, continuous sky coverage of 'overcast clouds', which could lead to misjudging ambient light or visibility conditions for critical operations.",
+        "satellite_analysis": {
+            "image_url": "https://placehold.co/600x400/101419/555555?text=Satellite+View+Kochi",
+            "analysis": "Analysis: Clear skies and no major formations indicate excellent visibility and minimal immediate weather-related hazards. However, prolonged clear conditions can lead to increased risk of dehydration and heat-related stress for outdoor activities."
+        },
+        "live_radar_data": {
+            "center": [
+                9.9399,
+                76.2602
+            ],
+            "tile_url": "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=fbce4f02be33df46be35fd0e71226460",
+            "zoom": 9
+        }
+    },
+    {
+        "timestamp": "2025-11-18T02:18:18.404411",
+        "city": "Kochi,IN",
+        "final_risk_level": "MODERATE",
+        "risk_report": {
+            "primary_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 24.99,
+                "wind_speed_ms": 4.87,
+                "description": "overcast clouds",
+                "humidity": 93
+            },
+            "air_quality_report": {
+                "aqi": 3,
+                "analysis": "Air quality is currently moderate and forecast to improve slightly tomorrow; everyone can enjoy outdoor activities.",
+                "tomorrow_aqi": 2
+            },
+            "heat_risk_report": {
+                "heat_index_c": 25.0,
+                "heat_risk": "LOW",
+                "warning": "No heat risk."
+            },
+            "heat_risk": "LOW",
+            "final_level": "MODERATE",
+            "final_reasoning": "The Air Quality Index score of 3 is the highest score, which dictates the final priority level.",
+            "trend": "After a recent spike to HIGH, the overall risk has returned to MODERATE while the air quality has remained stable."
+        },
+        "recommendations": "*   Take advantage of favorable conditions for outdoor activities; both immediate weather and heat risks are low, and air quality is good for everyone.\n*   While the immediate weather risk is low, be aware that the overall risk trend remains moderate following a recent spike. Continue to monitor local forecasts for any sudden changes.\n*   With temperatures forecast to reach up to 28\u00b0C over the next five days, remember to stay hydrated when spending time outdoors.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.2602,
+                "lat": 9.9399
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 24.99,
+                "feels_like": 25.97,
+                "temp_min": 24.99,
+                "temp_max": 24.99,
+                "pressure": 1009,
+                "humidity": 93,
+                "sea_level": 1009,
+                "grnd_level": 1009
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 4.87,
+                "deg": 97,
+                "gust": 6.33
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763412502,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763427040,
+                "sunset": 1763468989
+            },
+            "timezone": 19800,
+            "id": 1273874,
+            "name": "Kochi",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763413200,
+                    "temp_min": 23.94,
+                    "temp_max": 24.99,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 23.84,
+                    "temp_max": 27.39,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 23.84,
+                    "temp_max": 28.21,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763672400,
+                    "temp_min": 24.29,
+                    "temp_max": 28.14,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763758800,
+                    "temp_min": 24.32,
+                    "temp_max": 27.16,
+                    "icon": "10n",
+                    "pop": 1
+                }
+            ]
+        },
+        "air_quality_report": {
+            "aqi": 3,
+            "analysis": "Air quality is currently moderate and forecast to improve slightly tomorrow; everyone can enjoy outdoor activities.",
+            "tomorrow_aqi": 2
+        },
+        "advanced_fetch_data": {
+            "uv_index": 0,
+            "tomorrow_aqi": 2
+        },
+        "data_validation": "Data is consistent and reliable.",
+        "icon_analysis": "The generic cloud icon `\u2601\ufe0f` subtly understates 'overcast clouds,' which signifies complete sky coverage and no direct sunlight, potentially affecting mood or outdoor visibility.",
+        "satellite_analysis": {
+            "image_url": "https://placehold.co/600x400/101419/555555?text=Satellite+View+Kochi",
+            "analysis": "Analysis: Clear skies and no major formations suggest good visibility and minimal immediate risk of storm-related hazards. However, prolonged clear conditions could increase fire danger and heat stress, warranting monitoring of these factors."
+        },
+        "live_radar_data": {
+            "center": [
+                9.9399,
+                76.2602
+            ],
+            "tile_url": "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=fbce4f02be33df46be35fd0e71226460",
+            "zoom": 9
+        }
+    },
+    {
+        "timestamp": "2025-11-18T03:20:15.786607",
+        "city": "Kochi,IN",
+        "final_risk_level": "MODERATE",
+        "risk_report": {
+            "primary_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 24.99,
+                "wind_speed_ms": 3.8,
+                "description": "overcast clouds",
+                "humidity": 93
+            },
+            "air_quality_report": {
+                "aqi": 3,
+                "analysis": "Air quality is currently moderate and forecast to improve slightly, but still advises sensitive groups to limit prolonged outdoor exertion.",
+                "tomorrow_aqi": 2
+            },
+            "heat_risk_report": {
+                "heat_index_c": 25.0,
+                "heat_risk": "LOW",
+                "warning": "No heat risk."
+            },
+            "heat_risk": "LOW",
+            "final_level": "MODERATE",
+            "final_reasoning": "The Air Quality Index score of 3 is the highest score, which corresponds to a MODERATE priority level.",
+            "trend": "Following a temporary increase to HIGH, the overall risk has returned to and is now holding steady at a MODERATE level, while air quality remains stable."
+        },
+        "recommendations": "*   **Limit Outdoor Exertion for Sensitive Groups**: Due to moderate air quality, sensitive individuals\u2014including children, older adults, and people with heart or lung disease\u2014should reduce prolonged or strenuous activity outdoors. Air quality is forecast to improve.\n\n*   **Stay Weather-Aware**: Although conditions are currently calm, the overall weather risk is moderate. Stay informed through local forecasts, as conditions have fluctuated recently from a higher risk level.\n\n*   **No Heat Precautions Needed**: Heat risk is low, with comfortable temperatures forecast for the coming days. The general public can proceed with outdoor activities while remaining mindful of the air quality.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.2602,
+                "lat": 9.9399
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04n"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 24.99,
+                "feels_like": 25.97,
+                "temp_min": 24.99,
+                "temp_max": 24.99,
+                "pressure": 1009,
+                "humidity": 93,
+                "sea_level": 1009,
+                "grnd_level": 1008
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 3.8,
+                "deg": 103,
+                "gust": 4.92
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763415973,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763427040,
+                "sunset": 1763468989
+            },
+            "timezone": 19800,
+            "id": 1273874,
+            "name": "Kochi",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763424000,
+                    "temp_min": 23.94,
+                    "temp_max": 24.95,
+                    "icon": "10d",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 23.84,
+                    "temp_max": 27.39,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 23.84,
+                    "temp_max": 28.21,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763672400,
+                    "temp_min": 24.29,
+                    "temp_max": 28.14,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763758800,
+                    "temp_min": 24.32,
+                    "temp_max": 27.16,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763845200,
+                    "temp_min": 24.18,
+                    "temp_max": 24.18,
+                    "icon": "10n",
+                    "pop": 1
+                }
+            ]
+        },
+        "air_quality_report": {
+            "aqi": 3,
+            "analysis": "Air quality is currently moderate and forecast to improve slightly, but still advises sensitive groups to limit prolonged outdoor exertion.",
+            "tomorrow_aqi": 2
+        },
+        "advanced_fetch_data": {
+            "uv_index": 0,
+            "tomorrow_aqi": 2
+        },
+        "data_validation": "Data is consistent and reliable.",
+        "icon_analysis": "The \u2601\ufe0f icon accurately reflects 'overcast clouds' with no discernible mismatch or hidden warning for immediate safety concerns.",
+        "satellite_analysis": {
+            "image_url": "https://placehold.co/600x400/101419/555555?text=Satellite+View+Kochi",
+            "analysis": "Analysis: Clear skies indicate excellent visibility and low cloud cover, minimizing aviation and ground transit risks, but also suggest potential for increased ground-level ozone formation and amplified solar radiation exposure."
+        },
+        "live_radar_data": {
+            "center": [
+                9.9399,
+                76.2602
+            ],
+            "tile_url": "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=fbce4f02be33df46be35fd0e71226460",
+            "zoom": 9
+        }
+    },
+    {
+        "timestamp": "2025-11-18T13:53:31.628638",
+        "city": "Kochi,IN",
+        "final_risk_level": "CRITICAL",
+        "risk_report": {
+            "primary_level": "LOW",
+            "reasoning": "Conditions are calm.",
+            "details": {
+                "temp_c": 30.99,
+                "wind_speed_ms": 3.2,
+                "description": "overcast clouds",
+                "humidity": 86
+            },
+            "air_quality_report": {
+                "aqi": 2,
+                "analysis": "Air quality is currently fair and expected to remain fair tomorrow; the general public can participate in outdoor activities.",
+                "tomorrow_aqi": 2
+            },
+            "heat_risk_report": {
+                "heat_index_c": 43.1,
+                "heat_risk": "EXTREME",
+                "warning": "Danger: Heat stroke highly likely."
+            },
+            "heat_risk": "EXTREME",
+            "final_level": "CRITICAL",
+            "final_reasoning": "Error determining final priority. Defaulting to highest local risk.",
+            "trend": "Error analyzing trend."
+        },
+        "recommendations": "Error generating recommendations.",
+        "analyzed_news": "No relevant local safety news found.",
+        "raw_data": {
+            "coord": {
+                "lon": 76.2602,
+                "lat": 9.9399
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04d"
+                }
+            ],
+            "base": "stations",
+            "main": {
+                "temp": 30.99,
+                "feels_like": 37.99,
+                "temp_min": 30.99,
+                "temp_max": 30.99,
+                "pressure": 1008,
+                "humidity": 86,
+                "sea_level": 1008,
+                "grnd_level": 1007
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 3.2,
+                "deg": 218,
+                "gust": 3.06
+            },
+            "clouds": {
+                "all": 100
+            },
+            "dt": 1763453780,
+            "sys": {
+                "type": 1,
+                "id": 9211,
+                "country": "IN",
+                "sunrise": 1763427040,
+                "sunset": 1763468989
+            },
+            "timezone": 19800,
+            "id": 1273874,
+            "name": "Kochi",
+            "cod": 200
+        },
+        "forecast_data": {
+            "daily": [
+                {
+                    "dt": 1763456400,
+                    "temp_min": 24.94,
+                    "temp_max": 30.99,
+                    "icon": "10d",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763499600,
+                    "temp_min": 24.06,
+                    "temp_max": 27.81,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763586000,
+                    "temp_min": 23.85,
+                    "temp_max": 27.86,
+                    "icon": "03n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763672400,
+                    "temp_min": 24.03,
+                    "temp_max": 28.27,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763758800,
+                    "temp_min": 24,
+                    "temp_max": 28.51,
+                    "icon": "10n",
+                    "pop": 1
+                },
+                {
+                    "dt": 1763845200,
+                    "temp_min": 24.6,
+                    "temp_max": 26.33,
+                    "icon": "10n",
+                    "pop": 1
+                }
+            ]
+        },
+        "air_quality_report": {
+            "aqi": 2,
+            "analysis": "Air quality is currently fair and expected to remain fair tomorrow; the general public can participate in outdoor activities.",
+            "tomorrow_aqi": 2
+        },
+        "advanced_fetch_data": {
+            "uv_index": 4,
+            "tomorrow_aqi": 2
+        },
+        "data_validation": "Data is consistent and reliable.",
+        "icon_analysis": "The generic cloud icon is consistent with cloudy conditions, yet it subtly underrepresents the full, unbroken sky coverage indicated by 'overcast clouds', which implies a completely obscured sky.",
+        "satellite_analysis": {
+            "image_url": "https://placehold.co/600x400/101419/555555?text=Satellite+View+Kochi",
+            "analysis": "Analysis: Clear skies and no cloud formations indicate excellent visibility and minimal risk of precipitation-related hazards. However, this also means increased direct solar radiation, raising concerns for potential heat stress and elevated fire danger due to dry conditions."
+        },
+        "live_radar_data": {
+            "center": [
+                9.9399,
+                76.2602
+            ],
+            "tile_url": "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=fbce4f02be33df46be35fd0e71226460",
+            "zoom": 9
+        }
     }
 ]

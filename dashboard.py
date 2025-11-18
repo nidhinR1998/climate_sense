@@ -6,6 +6,8 @@ import time
 import requests
 import os
 import plotly.graph_objects as go
+from streamlit_folium import st_folium
+import folium
 
 # --- 1. PAGE CONFIGURATION ---
 st.set_page_config(
@@ -59,7 +61,7 @@ light_theme = {
 # Select theme based on session state
 theme = dark_theme if st.session_state.dark_mode else light_theme
 
-# --- NEW CSS with Variables, Animations, and Responsiveness (No Change to CSS Block) ---
+# --- NEW CSS with Variables, Animations, and Responsiveness (Removed fixed legend positioning) ---
 st.markdown(f"""
     <style>
     /* 1. CSS Variables --- */
@@ -217,8 +219,29 @@ st.markdown(f"""
         word-wrap: break-word;
     }}
 
+    /* 14. --- Precipitation Legend Styling (Removed fixed position/z-index properties) --- */
+    .legend {{
+        background: var(--bg-color-secondary);
+        padding: 8px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        color: var(--text-color);
+        font-size: 0.8rem;
+    }}
+    .legend-item {{
+        display: flex;
+        align-items: center;
+        margin-bottom: 3px;
+    }}
+    .legend-color {{
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+        border-radius: 50%;
+    }}
 
-    /* 14. --- Media Queries for Responsiveness --- */
+
+    /* 15. --- Media Queries for Responsiveness --- */
     @media (max-width: 992px) {{
         .forecast-container {{
             grid-template-columns: repeat(3, 1fr); 
@@ -427,6 +450,7 @@ if latest_entry:
     details = risk_report.get("details", {})
     main_weather = raw_data.get("main", {})
     sys_data = raw_data.get("sys", {})
+    live_radar_data = latest_entry.get("live_radar_data", {})  # NEW: Radar Data
 
     # Use FINAL_LEVEL from Agent 11
     final_level = risk_report.get("final_level", "UNKNOWN")
@@ -639,9 +663,48 @@ if latest_entry:
     st.header("Geographic Overview & Data Log")
 
     # --- Map Section (Relocated to bottom) ---
-    coord = raw_data.get("coord", {})
-    map_data = pd.DataFrame({'lat': [coord.get('lat', 0)], 'lon': [coord.get('lon', 0)]})
-    st.map(map_data, zoom=9, use_container_width=True)
+
+    # Extract radar data
+    radar_data = latest_entry.get('live_radar_data', {})
+    center = radar_data.get('center', [9.9399, 76.2602])  # Default to Kochi if missing
+    tile_url = radar_data.get('tile_url', 'https://tile.openstreetmap.org/{z}/{x}/{y}.png')
+    zoom = radar_data.get('zoom', 9)
+
+    # Initialize Folium Map
+    m = folium.Map(location=center, zoom_start=zoom,
+                   tiles="cartodbdarkmatter" if st.session_state.dark_mode else "openstreetmap")
+
+    # Add Precipitation Tile Layer (animated if the key supports it)
+    folium.TileLayer(
+        tiles=tile_url,
+        attr='Precipitation Radar',
+        name='Live Precipitation',
+        overlay=True,
+        control=True
+    ).add_to(m)
+
+    # Add a marker for the location
+    folium.Marker(location=center, popup=CITY_NAME).add_to(m)
+
+    # Add layer control to toggle precipitation
+    folium.LayerControl().add_to(m)
+
+    # Precipitation Legend (Moved outside of the map object to prevent overlap)
+    legend_html = """
+        <div class="legend">
+            <b>Precipitation Scale</b>
+            <div class="legend-item"><span class="legend-color" style="background:#5293E3;"></span> Light Rain</div>
+            <div class="legend-item"><span class="legend-color" style="background:#1C743C;"></span> Moderate</div>
+            <div class="legend-item"><span class="legend-color" style="background:#E35252;"></span> Heavy Rain/Storm</div>
+        </div>
+    """
+    # Render the map and custom legend in two columns for better alignment
+    map_col, legend_col = st.columns([4, 1])
+    with map_col:
+        st_folium(m, height=400, width="100%")
+    with legend_col:
+        # Place legend directly in the column, relying on CSS to keep it contained
+        st.markdown(legend_html, unsafe_allow_html=True)
 
     # --- Raw Data Expander ---
     with st.expander("Show Full Processed Data Log (Filtered)"):
